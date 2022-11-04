@@ -1,0 +1,86 @@
+
+
+
+.container {
+    background-color: blue;
+    color: white;
+    width: 96%;
+    height: 40px;
+    display: flex;
+    padding: 20px;
+    align-items: center;
+}
+.news  {
+    font-size: 24px;
+    width: 75%;
+}
+.knopki button {
+    color: white;
+    border: 0;
+    background-color: blue;
+
+}
+.knopki {
+    margin-left: 60%;
+    display: flex;
+    align-items: center;
+}
+
+.secondpart button {
+    width: 25%;
+    padding: 5px;
+    border: 0;
+    background-color: green;
+    color: white;
+    
+
+}
+.secondpart {
+    display: flex;
+    width: 100%;
+    border: 20px;
+}
+.mail {
+    width: 30%;
+}
+
+
+a:link    {color: red;}
+a:visited    {color: green;}
+a:hover    {color: black;}
+a:active    {color: blue;}
+
+
+td {border: 1px solid black; padding: 5px;}
+tr:first-child {font-weight: bold; background: rgb(3, 3, 84); color: white;}
+tr:last-child {font-weight: bold; background: lightgrey;}
+tr:nth-child(2) {background: rgb(255, 0, 208);}
+tr:nth-child(3) {background: rgb(255, 0, 208);}
+tr:nth-child(4) {background: rgb(255, 0, 208);}
+tr:nth-child(11) {background: rgb(0, 204, 255);}
+tr:nth-child(12) {background: rgb(0, 204, 255);}
+tr:nth-child(13) {background: rgb(0, 204, 255);}
+
+h1 {
+    color:blue; 
+    font-weight:700; 
+    font-size:22px;
+    width: 100%;
+    
+}
+
+.table {
+    margin-left:10PX;
+    width: 20%;
+    margin-top: 15px;
+    margin-right: 10px;
+}
+
+.Text {
+    width: 65%;
+    margin-left: 10px;
+}
+
+.mail {
+    width: 15%;
+}

@@ -1,0 +1,129 @@
+
+
+.zagolovok {
+    background-color: black;
+    color: white;
+    width: 96%;
+    height: 40px;
+    display: flex;
+    padding: 20px;
+    align-items: center;
+}
+.news  {
+    font-size: 24px;
+    width: 75%;
+}
+
+.knopki {
+    margin-left: 60%;
+    display: flex;
+    align-items: center;
+}
+
+.knopki button {
+    color: white;
+    border: 0;
+    background-color: black;
+
+}
+
+.secondpart {
+    display: flex;
+    width: 97%;
+    background-color: rgb(242, 178, 227);
+    margin-top: 20px;
+    padding: 10px;
+}
+
+.kartinka {
+    width: 30%;
+    padding:0;
+}
+
+.text {
+    width: 60%;
+    
+}
+
+.secondpart h1 {
+    font: size 24px;
+    color: rgb(142, 15, 36);
+    
+
+
+}
+
+
+
+.counteiners {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: 0;
+    padding: 20px 75px;
+    
+    
+}
+
+.firstcount {
+    width: 20%;
+    border: 3px red solid;
+    margin-right: 40px;
+   
+}
+
+.secondcount {
+    width: 20%;
+    border: 3px red solid;
+    margin-right: 40px;
+    
+}
+
+.thirdcount {
+    width: 20%;
+    border: 3px red solid;
+    margin-right: 40px;
+}
+    
+
+.fourthcount {
+    width: 20%;
+    border: 3px red solid;
+    margin-right: 40px;
+   
+}
+
+.RazdelText {
+   padding: 22px;
+   font-size: 27px;
+   font-weight: 700;
+   color: blueviolet;
+   text-align: center;
+ 
+}
+
+.counteiners h1 {
+    padding: 10px;
+    font-size: 20px;
+}
+
+.counteiners p {
+    padding: 10px;
+}
+
+.counteiners button {
+    padding: 10px;
+    border-radius: 30px;
+    border-color: pink;
+    background-color: pink;
+    color: rgb(225, 38, 38);
+    
+}
+
+a { 
+    text-decoration: none; 
+    color: white;
+    font-weight:1000;
+   } 
+
+    
