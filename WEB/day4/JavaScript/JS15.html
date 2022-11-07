@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title>JavaScript Zadachi</title>
+        </head>
+        <body>
+    <script> 
+    let sumtg = parseInt(prompt('INSERT Summu tenge:'));
+    let cent = sumtg%380
+    let dollar = sumtg/380
+    if (sumtg%380!=0) {
+        alert((sumtg/380).toFixed(0) + " USD and " +((dollar.toFixed(2)-(Math.floor(dollar)).toFixed(0))*100).toFixed(0) +' cents');
+    }
+    else if (sumtg%380==0) {
+        alert('ONLY'+ dollar+ 'USD');
+    }
+
+    </script>
+        </body>
+        </html>

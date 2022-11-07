@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <title>JavaScript Zadachi</title>
+        </head>
+        <body>
+    <script> 
+    let minuta = parseInt(prompt('INSERT minutu:'));
+    let chas = minuta/60
+    if (chas%60!=0) {
+        alert(chas.toFixed(0) + " HOURS " +(minuta - chas.toFixed(0)*60) +' MINUTES');
+    }
+    else if  (chas%60==0) {
+        alert('ONLY'+ chas+ 'HOURS');
+    }
+
+    </script>
+        </body>
+        </html>
