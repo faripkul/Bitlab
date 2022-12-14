@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="59140691-9647-4bd0-aa52-4e6a557644e2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/.idea/artifacts/Bootcamp3javaee_war_exploded.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/.idea/libraries/jakarta_servlet_api_6_0_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/.idea/libraries/javax_servlet_jsp_api_2_3_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/Bootcamp3javaee.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/out/artifacts/Bootcamp3javaee_war_exploded/FirstTaskJSP/Additems.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/out/artifacts/Bootcamp3javaee_war_exploded/FirstTaskJSP/Spisok.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/out/artifacts/Bootcamp3javaee_war_exploded/FirstTaskJSP/details.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/out/artifacts/Bootcamp3javaee_war_exploded/FirstTaskJSP/home.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/out/artifacts/Bootcamp3javaee_war_exploded/FirstTaskJSP/navbar.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/out/artifacts/Bootcamp3javaee_war_exploded/SecondTaskJSP/glavnaiyaStranica.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/out/artifacts/Bootcamp3javaee_war_exploded/SecondTaskJSP/navbar.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/out/artifacts/Bootcamp3javaee_war_exploded/ThirdTaskJSP/Addinform.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/out/artifacts/Bootcamp3javaee_war_exploded/ThirdTaskJSP/Details.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/out/artifacts/Bootcamp3javaee_war_exploded/ThirdTaskJSP/Detailz.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/out/artifacts/Bootcamp3javaee_war_exploded/ThirdTaskJSP/glavnStranica.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/out/artifacts/Bootcamp3javaee_war_exploded/ThirdTaskJSP/head.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/out/artifacts/Bootcamp3javaee_war_exploded/ThirdTaskJSP/navbar.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/out/artifacts/Bootcamp3javaee_war_exploded/WEB-INF/classes/kz/bitlab/servlets/task1/DBManager.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/out/artifacts/Bootcamp3javaee_war_exploded/WEB-INF/classes/kz/bitlab/servlets/task1/DetailsServlet.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/out/artifacts/Bootcamp3javaee_war_exploded/WEB-INF/classes/kz/bitlab/servlets/task1/HomeServlet.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/out/artifacts/Bootcamp3javaee_war_exploded/WEB-INF/classes/kz/bitlab/servlets/task1/Item.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/out/artifacts/Bootcamp3javaee_war_exploded/WEB-INF/classes/kz/bitlab/servlets/task1/Items.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/out/artifacts/Bootcamp3javaee_war_exploded/WEB-INF/classes/kz/bitlab/servlets/task1/addItemServlet.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/out/artifacts/Bootcamp3javaee_war_exploded/WEB-INF/classes/kz/bitlab/servlets/task2/ArrayNovostei.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/out/artifacts/Bootcamp3javaee_war_exploded/WEB-INF/classes/kz/bitlab/servlets/task2/HomeServlet.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/out/artifacts/Bootcamp3javaee_war_exploded/WEB-INF/classes/kz/bitlab/servlets/task2/News.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/out/artifacts/Bootcamp3javaee_war_exploded/WEB-INF/classes/kz/bitlab/servlets/task2/Servletnew.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/out/artifacts/Bootcamp3javaee_war_exploded/WEB-INF/classes/kz/bitlab/servlets/task3/AddInfoServlet.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/out/artifacts/Bootcamp3javaee_war_exploded/WEB-INF/classes/kz/bitlab/servlets/task3/DBManager.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/out/artifacts/Bootcamp3javaee_war_exploded/WEB-INF/classes/kz/bitlab/servlets/task3/DetailsServlett.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/out/artifacts/Bootcamp3javaee_war_exploded/WEB-INF/classes/kz/bitlab/servlets/task3/HomeServlet.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/out/artifacts/Bootcamp3javaee_war_exploded/WEB-INF/classes/kz/bitlab/servlets/task3/Tasks.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/out/artifacts/Bootcamp3javaee_war_exploded/WEB-INF/lib/jakarta.servlet-api-6.0.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/out/artifacts/Bootcamp3javaee_war_exploded/WEB-INF/lib/javax.servlet.jsp-api-2.3.3.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/out/artifacts/Bootcamp3javaee_war_exploded/WEB-INF/web.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/out/production/Bootcamp3javaee/kz/bitlab/servlets/task1/DBManager.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/out/production/Bootcamp3javaee/kz/bitlab/servlets/task1/DetailsServlet.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/out/production/Bootcamp3javaee/kz/bitlab/servlets/task1/HomeServlet.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/out/production/Bootcamp3javaee/kz/bitlab/servlets/task1/Item.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/out/production/Bootcamp3javaee/kz/bitlab/servlets/task1/Items.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/out/production/Bootcamp3javaee/kz/bitlab/servlets/task1/addItemServlet.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/out/production/Bootcamp3javaee/kz/bitlab/servlets/task2/ArrayNovostei.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/out/production/Bootcamp3javaee/kz/bitlab/servlets/task2/HomeServlet.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/out/production/Bootcamp3javaee/kz/bitlab/servlets/task2/News.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/out/production/Bootcamp3javaee/kz/bitlab/servlets/task2/Servletnew.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/out/production/Bootcamp3javaee/kz/bitlab/servlets/task3/AddInfoServlet.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/out/production/Bootcamp3javaee/kz/bitlab/servlets/task3/DBManager.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/out/production/Bootcamp3javaee/kz/bitlab/servlets/task3/DetailsServlett.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/out/production/Bootcamp3javaee/kz/bitlab/servlets/task3/HomeServlet.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/out/production/Bootcamp3javaee/kz/bitlab/servlets/task3/Tasks.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/src/kz/bitlab/servlets/task1/DBManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/src/kz/bitlab/servlets/task1/DetailsServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/src/kz/bitlab/servlets/task1/HomeServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/src/kz/bitlab/servlets/task1/Item.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/src/kz/bitlab/servlets/task1/Items.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/src/kz/bitlab/servlets/task1/addItemServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/src/kz/bitlab/servlets/task2/ArrayNovostei.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/src/kz/bitlab/servlets/task2/HomeServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/src/kz/bitlab/servlets/task2/News.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/src/kz/bitlab/servlets/task2/Servletnew.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/src/kz/bitlab/servlets/task3/AddInfoServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/src/kz/bitlab/servlets/task3/DBManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/src/kz/bitlab/servlets/task3/DetailsServlett.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/src/kz/bitlab/servlets/task3/HomeServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/src/kz/bitlab/servlets/task3/Tasks.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/web/FirstTaskJSP/Additems.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/web/FirstTaskJSP/Spisok.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/web/FirstTaskJSP/details.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/web/FirstTaskJSP/home.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/web/FirstTaskJSP/navbar.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/web/SecondTaskJSP/glavnaiyaStranica.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/web/SecondTaskJSP/navbar.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/web/ThirdTaskJSP/Addinform.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/web/ThirdTaskJSP/Details.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/web/ThirdTaskJSP/Detailz.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/web/ThirdTaskJSP/glavnStranica.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/web/ThirdTaskJSP/head.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/web/ThirdTaskJSP/navbar.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/web/WEB-INF/lib/jakarta.servlet-api-6.0.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/web/WEB-INF/lib/javax.servlet.jsp-api-2.3.3.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Bootcamp3javaee/web/WEB-INF/web.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../untitled1/src/kz/bitlab/servlets/HomeServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../untitled1/web/WEB-INF/lib/jakarta.servlet-api-6.0.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../untitled1/web/WEB-INF/lib/javax.servlet.jsp-api-2.3.3.jar" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="2HtdNR10oRmPI6Ohle8kkrVojrI" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Fariza 3/JavaEE/Bootcamp3javaee",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="59140691-9647-4bd0-aa52-4e6a557644e2" name="Changes" comment="" />
+      <created>1669108274801</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1669108274801</updated>
+      <workItem from="1669108276595" duration="159000" />
+      <workItem from="1669564284659" duration="37000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

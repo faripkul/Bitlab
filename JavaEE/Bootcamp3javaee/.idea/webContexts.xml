@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebContextManager">
+    <option name="state">
+      <map>
+        <entry key="file://$PROJECT_DIR$/web/FirstTaskJDBS/DetailsStud.jsp" value="file://$PROJECT_DIR$/web/FirstTaskJDBS" />
+        <entry key="file://$PROJECT_DIR$/web/ProjectJavaEE/strAvtor.jsp" value="file://$PROJECT_DIR$/web/ProjectJavaEE" />
+        <entry key="file://$PROJECT_DIR$/web/SessionFirstTask/Korzina.jsp" value="file://$PROJECT_DIR$/web/SessionFirstTask" />
+        <entry key="file://$PROJECT_DIR$/web/SessionThirdTask/AvtorizStr.jsp" value="file://$PROJECT_DIR$/web/SessionThirdTask" />
+        <entry key="file://$PROJECT_DIR$/web/ThirdTaskJDBS/AddStudent.jsp" value="file://$PROJECT_DIR$/web/ThirdTaskJDBS" />
+        <entry key="file://$PROJECT_DIR$/web/ThirdTaskJDBS/navbar4.jsp" value="file://$PROJECT_DIR$/web/ThirdTaskJDBS" />
+      </map>
+    </option>
+  </component>
+</project>

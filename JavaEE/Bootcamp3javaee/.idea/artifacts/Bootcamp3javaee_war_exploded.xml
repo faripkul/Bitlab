@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="Bootcamp3javaee:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/Bootcamp3javaee_war_exploded</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="Bootcamp3javaee" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="Bootcamp3javaee/web/Web" />
+    </root>
+  </artifact>
+</component>
