@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th = "http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout/main.html">
+<div layout:fragment="mainContent">
+    <form th:action="@{'/handled'}" method="post">
+        <div class="mb-3">
+        <input type="hidden" name="id" th:value="${applicationz.id}">
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Full name</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1"
+                   name="userName" th:value="${applicationz.userName}">
+        </div>
+        <div class="mt-3">
+            Course <select class="form-select" name="courses.id">
+            <option th:each="cor:${coursez}"
+                    th:text="${cor.name+' - '+cor.price+'$'}"
+                    th:value="${cor.id}"
+                    th:selected="${applicationz.courses!=null && cor.id==applicationz.courses.id}">
+            </option>
+        </select>
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Phone number</label>
+            <input type="text" class="form-control" id="exampleFormControlInput3" name="phone"
+                   th:value="${applicationz.phone}">
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Text</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="commentary"
+                      th:text="${applicationz.commentary}"></textarea>
+        </div>
+        <div class="row mt-3">
+            <div class="col-12" th:if="${applicationz.handled==false}">
+                <div class="col-12">
+              <button type="button" data-bs-target="#operatorModal" data-bs-toggle="modal">Update</button>
+              <button type="button" data-bs-target="#deleteModal" data-bs-toggle="modal">Delete</button>
+            </div>
+        </div>
+        </div>
+
+        <div class="modal fade" id="operatorModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title">Change operator</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col">Change</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Surname</th>
+                                <th scope="col">Department</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="oper: ${operatorz}">
+                                <td class="text-center">
+                                    <form th:action="@{'/assign-operator'}" method="post">
+                                        <input type="hidden" name="operator_id" th:value="${oper.id}">
+                                        <input type="hidden" name="application_id" th:value="${applicationz.id}">
+                                        <button class="btn btn-success btn-sm"> + </button>
+                                    </form>
+                                <td>
+                                <td th:text="${oper.name}"></td>
+                                <td th:text="${oper.surname}"></td>
+                                <td th:text="${oper.department}"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button class="btn btn-primary">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <form>
+    <div class="row mt-3">
+        <div class="col-12" th:if="${applicationz.handled==true}">
+            <button type="button" data-bs-target="#deleteModal" data-bs-toggle="modal">Delete</button>
+        </div>
+    </div>
+    </form>
+
+    <table class="table table-striped mt-5" >
+        <thead>
+        <tr>
+            <th>REMOVE</th>
+            <th>NAME</th>
+            <th>SURNAME</th>
+            <th>DEPARTMENT</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="oper: ${applicationz.operators}">
+            <td class="text-center">
+                <form th:action="@{'/unassign-operator'}" method="post">
+                    <input type="hidden" name="operator_id" th:value="${oper.id}">
+                    <input type="hidden" name="application_id" th:value="${applicationz.id}">
+                    <button class="btn btn-danger btn-sm"> - </button>
+                </form>
+            </td>
+            <td th:text="${oper.name}"></td>
+            <td th:text="${oper.surname}"></td>
+            <td th:text="${oper.department}"></td>
+        </tbody>
+    </table>
+
+    <div class="modal fade" id="deleteModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form th:action="@{'/deleteApplic'}" method="post">
+                    <input type="hidden" name="id" th:value="${applicationz.id}">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Delete</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h1 class="text-center"> Are you sure? </h1>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">NO</button>
+                        <button class="btn btn-primary">YES</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+</html>

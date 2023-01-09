@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th = "http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout/main.html">
+<div layout:fragment="mainContent">
+  <form th:action="@{'/addAplication'}" method="post">
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Full name</label>
+    <input type="text" class="form-control" id="exampleFormControlInput1" name="userName">
+  </div>
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Course</label>
+    <input type="text" class="form-control" id="exampleFormControlInput2" name="courseName">
+  </div>
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Phone number</label>
+    <input type="text" class="form-control" id="exampleFormControlInput3" placeholder="+7(___)___-__-__" name="phone">
+  </div>
+  <div class="mb-3">
+    <label for="exampleFormControlTextarea1" class="form-label">Text</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="commentary"></textarea>
+  </div>
+    <button>ADD</button>
+  </form>
+</div>
+</html>

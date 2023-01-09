@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th = "http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <form th:action="@{'/addItem'}" method="post">
+       Name:<input type="text" name="name">
+       Description:<input type="text" name="description">
+       Price:<input type="text" name="price">
+       <button>Add item</button>
+  </form>
+
+    <h4 th:each="it : ${itemz}">
+        <span th:text= "${it.id}"></span>
+        <span th:text= "${it.name}"></span>
+        <span th:text= "${it.description}"></span>
+        <span th:text= "${it.price}"></span>
+     <h4>
+ </body>
+</html>

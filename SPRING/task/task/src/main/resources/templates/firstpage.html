@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th = "http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout/main.html">
+<div class="container mt-3" layout:fragment="mainContent">
+    <div class="container-fluid d-flex align-content-around flex-wrap">
+    <div class="card" style="width: 18rem;" th:each="app:${applicationz}">
+        <div class="card-body">
+            <span style="color: red" th:if= "${app.handled==true}">Obrabotannaiya zaiyavka</span>
+            <span style="color: green" th:if= "${app.handled==false}">Neobrabotannaiya zaiyavka</span>
+            <h5 class="card-title">Zaiyavka ot <span th:text= "${app.userName}"></span></h5>
+            <h6 class="card-subtitle mb-2 text-muted">Course: <span th:text= "${app.courseName}"></span> </h6>
+            <p class="card-text"> <span th:text= "${app.commentary}"></span></p>
+            <p class="card-text">Tel:  <span th:text= "${app.phone}"></span></p>
+            <a th:href="@{'detailsStr?id=' + ${app.id}}" class="card-link">More</a>
+        </div>
+    </div>
+    </div>
+</div>
+</html>
