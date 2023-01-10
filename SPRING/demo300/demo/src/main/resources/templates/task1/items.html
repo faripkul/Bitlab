@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th = "http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout/main.html">
+<div layout:fragment="mainContent">
+  <div class="container">
+      <div class="row">
+          <div class="col-12">
+              <table class="table table-striped">
+                  <thead>
+                  <tr>
+                      <th>ID</th>
+                      <th>NAME</th>
+                      <th>Faculty</th>
+                      <th>DESCRIPTION</th>
+                      <th>PRICE</th>
+                      <th style="width: 10%;">DETAILS</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                     <tr th:each="it : ${itemz}">
+                         <td th:text= "${it.id}"></td>
+                         <td th:text= "${it.name}"></td>
+                         <td th:text="${it.faculty.name + '/' + it.faculty.code}">
+                         <td th:text= "${it.description}"></td>
+                         <td th:text= "${it.price}"></td>
+                         <td>
+                            <a class="btn btn-primary btn-sm" th:href="@{'detailss?id=' + ${it.id}}">
+                            DETAILS
+                            </a>
+                         </td>
+                  </tbody>
+              </table>
+          </div>
+      </div>
+  </div>
+
+<!--    <h4 th:each="it : ${itemz}">-->
+<!--        <span th:text= "${it.id}"></span>-->
+<!--        <span th:text= "${it.name}"></span>-->
+<!--        <span th:text= "${it.description}"></span>-->
+<!--        <span th:text= "${it.price}"></span>-->
+<!--        <a th:href="@{'/details?id=' + ${it.id}}">Details</a>-->
+<!--     <h4>-->
+<!-- </body>-->
+</div>
+</html>

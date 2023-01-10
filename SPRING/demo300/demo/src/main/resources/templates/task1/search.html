@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th = "http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout/main.html">
+<div layout:fragment="mainContent">
+    <div class="row mt-3">
+        <div class="col-12">
+            <form th:action="@{'/search'}" method="get">
+                <div class="row">
+                   <div class="col-5">
+                        <input type="text" class="form-control" placeholder="Enter key" name="key"
+                        th:value="${param.key}">
+                   </div>
+                    <div class="col-5">
+                        <select class="form-select" name="order">
+                            <option value="asc">Sort by GPA in ascending order</option>
+                            <option value="desk">Sort by GPA in descending order</option>
+                        </select>
+                    </div>
+                    <div class="col-2">
+                        <button class="btn btn-success">SEARCH</button>
+                    </div>
+                </div>
+            </form>
+
+
+
+
+  <div class="container">
+      <div class="row">
+          <div class="col-12">
+              <table class="table table-striped">
+                  <thead>
+                  <tr>
+                      <th>ID</th>
+                      <th>NAME</th>
+                      <th>Faculty</th>
+                      <th>DESCRIPTION</th>
+                      <th>PRICE</th>
+                      <th style="width: 10%;">DETAILS</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                     <tr th:each="it : ${itemz}">
+                         <td th:text= "${it.id}"></td>
+                         <td th:text= "${it.name}"></td>
+                         <td th:text="${it.faculty.name + '/' + it.faculty.code}">
+                         <td th:text= "${it.description}"></td>
+                         <td th:text= "${it.price}"></td>
+                         <td>
+                            <a class="btn btn-primary btn-sm" th:href="@{'detailss?id=' + ${it.id}}">
+                            DETAILS
+                            </a>
+                         </td>
+                  </tbody>
+              </table>
+          </div>
+      </div>
+  </div>
+</div>
+</html>

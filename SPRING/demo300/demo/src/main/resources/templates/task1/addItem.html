@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th = "http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout/main.html">
+<div layout:fragment="mainContent">
+<div class="row">
+    <div class="col-6">
+        <form th:action="@{'/addItem-v2'}" method="post">
+           <br> Name:<input type="text" name="name">
+            <br>
+            Description:<input type="text" name="description">
+            <br>
+            Faculty:<select class="form-select" name="faculty.id">
+            <option th:each="fac:${facultiz}" th:text="${fac.name + '-' +fac.code}" th:value="${fac.id}">
+            </option>
+        </select>
+            <br>
+            Price:<input type="text" name="price">
+            <button>Add item</button>
+        </form>
+    </div>
+</div>
+</div>
+</html>

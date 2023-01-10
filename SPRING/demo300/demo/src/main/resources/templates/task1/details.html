@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th = "http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout/main.html">
+<div layout:fragment="mainContent">
+    <div class="row" th:if="${itemz!=null}">
+<form th:action="@{'/saveItem'}" method="post">
+       <input type="hidden" name="id" th:value="${itemz.id}">
+       Name:<input type="text" name="name" th:value="${itemz.name}">
+       Description:<input type="text" name="description" th:value="${itemz.description}">
+       Faculty:<select class="form-select" name="faculty.id">
+       <option th:each="fac:${facultiz}"
+               th:text="${fac.name + '-' +fac.code}"
+               th:value="${fac.id}"
+               th:selected="${itemz.faculty!=null && fac.id==itemz.faculty.id}">
+       </option>
+     </select>
+       Price:<input type="text" name="price" th:value="${itemz.price}">
+       <button>Update item</button>
+       <button type="button" data-bs-target="#deleteModal" data-bs-toggle="modal">Delete item</button>
+  </form>
+    </div>
+    <div class="modal fade" id="deleteModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form th:action="@{'/deleteItem'}" method="post">
+                    <input type="hidden" name="id" th:value="${itemz.id}">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Delete item</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h1 class="text-center"> Are you sure? </h1>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">NO</button>
+                        <button class="btn btn-primary">YES</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <h4 class="text-center mt-5">List of assigned subjects</h4>
+    <table class="table table-striped mt-2">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>NAME</th>
+            <th>CODE</th>
+            <th>CREDITS</th>
+            <th>REMOVE</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="sub: ${itemz.subjects}">
+            <td th:text="${sub.id}"></td>
+            <td th:text="${sub.name}"></td>
+            <td th:text="${sub.code}"></td>
+            <td th:text="${sub.credit}"></td>
+            <td class="text-center">
+                <form th:action="@{'/unassign-subject'}" method="post">
+                    <input type="hidden" name="subject_id" th:value="${sub.id}">
+                    <input type="hidden" name="item_id" th:value="${itemz.id}">
+                    <button class="btn btn-danger btn-sm"> - </button>
+                </form>
+            </td>
+        </tbody>
+    </table>
+
+    <h4 class="text-center mt-5">List of possible subjects</h4>
+    <table class="table table-striped mt-2" >
+     <thead>
+        <tr>
+            <th>ID</th>
+            <th>NAME</th>
+            <th>CODE</th>
+            <th>CREDITS</th>
+            <th>ADD</th>
+        </tr>
+     </thead>
+     <tbody>
+         <tr th:each="sub: ${sujectz}">
+             <td th:text="${sub.id}"></td>
+             <td th:text="${sub.name}"></td>
+             <td th:text="${sub.code}"></td>
+             <td th:text="${sub.credit}"></td>
+             <td class="text-center">
+              <form th:action="@{'/assign-subject'}" method="post">
+                  <input type="hidden" name="subject_id" th:value="${sub.id}">
+                  <input type="hidden" name="item_id" th:value="${itemz.id}">
+                 <button class="btn btn-success btn-sm"> + </button>
+              </form>
+             </td>
+     </tbody>
+    </table>
+      <div class="row" th:if="${itemz==null}"> 404 item not found
+      </div>
+</div>
+</body>
+</html>
