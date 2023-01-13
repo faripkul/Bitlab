@@ -3,16 +3,15 @@ package com.example.demo.controller.task1;
 
 import com.example.demo.beans.Somebean;
 import com.example.demo.controller.task2.*;
+import com.example.demo.service.FacultyService;
+import com.example.demo.service.ItemService;
+import com.example.demo.service.SubjectService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -22,13 +21,13 @@ public class HomeContoller {
     private Somebean somebean;
 
     @Autowired
-    private ItemRepository itemRepository;
+    private ItemService itemService;
 
     @Autowired
-    private FacultyRepository facultyRepository;
+    private FacultyService facultyService;
 
     @Autowired
-    private SubjectRepository subjectRepository;
+    private SubjectService subjectService;
 
     @GetMapping(value = "/test-bean")
     public String testBean(Model model){
@@ -51,10 +50,9 @@ public class HomeContoller {
 
     @GetMapping(value = "/itemss")
     public String home(Model model) {
-        List<BitlabItems> items = itemRepository.findAll();
        // List<BitlabItems> items = itemRepository.findAllByPriceGreaterThanEqual(111);
 //        List<BitlabItems> items = itemRepository.getBestPrice(120, 1000);
-        model.addAttribute("itemz", items);
+        model.addAttribute("itemz", itemService.getAllItems());
         return "/task1/items";
     }
 
@@ -74,7 +72,7 @@ public class HomeContoller {
 
     @PostMapping(value = "/addItem-v2")
     public String addItem(BitlabItems item) {
-        itemRepository.save(item);
+        item = itemService.addItem(item);
         return "redirect:/itemss";
 
     }
@@ -82,14 +80,14 @@ public class HomeContoller {
     @GetMapping(value = "/detailss")
     public String Details(Model model,
                           @RequestParam(name = "id") Long id) {
-   BitlabItems item = itemRepository.findById(id).orElse(null);
+   BitlabItems item = itemService.getItems(id);
 //    BitlabItems item = itemRepository.findByIdAndAndPriceBetween(id, 1, 10000);
     model.addAttribute("itemz", item);
 
-    List<BitlabFaculty> faculties = facultyRepository.findAll();
+    List<BitlabFaculty> faculties = facultyService.getFaculties();
     model.addAttribute("facultiz", faculties);
 
-    List<BitlabSubject> subjects = subjectRepository.findAll();
+    List<BitlabSubject> subjects = subjectService.getSubjects();
     subjects.removeAll(item.getSubjects());
     model.addAttribute("sujectz", subjects);
 
@@ -99,57 +97,35 @@ public class HomeContoller {
 
     @GetMapping(value = "/addItem")
     public String addItem(Model model){
-        List<BitlabFaculty>faculties = facultyRepository.findAll();
-        model.addAttribute("facultiz", faculties);
+//        List<BitlabFaculty>faculties = facultyRepository.findAll();
+        model.addAttribute("facultiz", facultyService.getFaculties());
         return "task1/addItem";
 }
 
 
     @PostMapping(value = "/saveItem")
     public String saveItem(BitlabItems item){
-     itemRepository.save(item);
+     item = itemService.saveItem(item);
      return "redirect:/itemss";
     }
 
     @PostMapping(value = "/deleteItem")
-    public String deleteItem(@RequestParam(name = "id") Long id){
-        itemRepository.deleteById(id);
+    public String deleteItem(BitlabItems item){
+     itemService.deleteItem(item);
         return "redirect:/itemss";
     }
 
     @PostMapping(value = "/assign-subject")
     public String assignStudent(@RequestParam(name="item_id")Long itemId,
                                 @RequestParam(name="subject_id")Long subjectId) {
-
-        BitlabItems item = itemRepository.findById(itemId).orElseThrow();
-        BitlabSubject subject = subjectRepository.findById(subjectId).orElseThrow();
-
-
-        List<BitlabSubject>subjects=item.getSubjects();
-        if(subjects==null){
-            subjects=new ArrayList<>();
-        }
-        subjects.add(subject);
-        itemRepository.save(item);
-
-        return "redirect:/detailss?id="+itemId;
+      BitlabItems item = itemService.assignSubject(itemId,subjectId);
+      return "redirect:/detailss?id="+itemId;
     }
 
     @PostMapping(value = "/unassign-subject")
     public String unassignStudent(@RequestParam(name="item_id")Long itemId,
                                 @RequestParam(name="subject_id")Long subjectId) {
-
-        BitlabItems item = itemRepository.findById(itemId).orElseThrow();
-        BitlabSubject subject = subjectRepository.findById(subjectId).orElseThrow();
-
-
-        List<BitlabSubject>subjects=item.getSubjects();
-        if(subjects==null){
-            subjects=new ArrayList<>();
-        }
-        subjects.remove(subject);
-        itemRepository.save(item);
-
+        BitlabItems item = itemService.unAssignSubject(itemId,subjectId);
         return "redirect:/detailss?id="+itemId;
     }
 
@@ -157,19 +133,9 @@ public class HomeContoller {
     public String search(@RequestParam(name = "key", required = false, defaultValue = "")String key,
                          @RequestParam(name = "order", required = false, defaultValue = "ask")String order,
                          Model model){
-       List<BitlabItems> items = null;
-        if(order!=null){
-            if(order.equals("desk")){
-                items = itemRepository.searchItemsDesk("%"+key.toLowerCase()+"%");
-            }
-        }
-          if(items==null){
-              items = itemRepository.searchItemsAsc("%"+key.toLowerCase()+"%");
-          }
-          model.addAttribute("itemz", items);
-           return "task1/search";
+        model.addAttribute("itemz", itemService.search(key, order));
+        return "task1/search";
     }
-
 }
 
 

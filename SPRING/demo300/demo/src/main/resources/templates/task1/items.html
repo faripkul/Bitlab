@@ -10,11 +10,11 @@
                   <thead>
                   <tr>
                       <th>ID</th>
-                      <th>NAME</th>
-                      <th>Faculty</th>
-                      <th>DESCRIPTION</th>
-                      <th>PRICE</th>
-                      <th style="width: 10%;">DETAILS</th>
+                      <th th:text="#{label.name}"></th>
+                      <th th:text="#{label.faculty}"></th>
+                      <th th:text="#{label.description}"></th>
+                      <th th:text="#{label.price}"></th>
+                      <th style="width: 10%;" th:text="#{button.details}"></th>
                   </tr>
                   </thead>
                   <tbody>
@@ -25,9 +25,8 @@
                          <td th:text= "${it.description}"></td>
                          <td th:text= "${it.price}"></td>
                          <td>
-                            <a class="btn btn-primary btn-sm" th:href="@{'detailss?id=' + ${it.id}}">
-                            DETAILS
-                            </a>
+                             <a class="btn btn-primary btn-sm" th:href="@{'detailss?id=' + ${it.id}}" th:text="#{button.details}">
+                             </a>
                          </td>
                   </tbody>
               </table>
