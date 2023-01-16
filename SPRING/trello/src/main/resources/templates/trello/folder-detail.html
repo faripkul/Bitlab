@@ -1,0 +1,102 @@
+<html lang="en"
+      xmlns:th = "http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout/main.html">
+<div class="container mt-3" layout:fragment="mainContent">
+
+<br><br><br>
+
+    <div class="container marketing mt-2">
+        <div class="row">
+            <div class="card">
+                <div class="card-body" >
+                    <h5 class="card-title" th:text="${folder.name}"></h5>
+                    <button class="badge text-bg-primary">Primary</button>
+                    <button class="badge text-bg-secondary">Secondary</button>
+                    <button class="badge text-bg-success">Success</button>
+                    <button class="badge text-bg-danger">Danger</button>
+                    <a href="#" class="btn btn-gradient" data-bs-target="#addCategory" data-bs-toggle="modal">+Add category</a>
+                </div>
+            </div>
+         </div>
+      </div>
+
+    <div class="modal" tabindex="-1" id="addCategory">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form th:action="@{'/add-category'}" method="post">
+                    <input type="hidden" name="folder.id" th:value="${folder.id}">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Assign category</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>CATEGORY NAME:</p>
+                        <select  name="category_id" class="form-select">
+                            <option th:each="cat: ${categoriez}" th:text="${cat.name}" th:value="${cat.id}" ></option>
+                        </select>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button class="btn btn-primary">Add</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+<div class="container">
+    <br><br>
+    <button type="button" class="btn btn-gradient" data-bs-target="#addTask" data-bs-toggle="modal">+New Task</button>
+    <br><br>
+
+    <table class="table table-striped table-hover">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Task name</th>
+            <th scope="col">Status</th>
+            <th scope="col" style="width: 10%">Details</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="task: ${taskz}">
+            <th scope="row" th:text="${task.id}"></th>
+            <td th:text="${task.title}"></td>
+            <td th:text="${task.status}"></td>
+            <td>
+                <a href="#" class="btn btn-primary btn-sm">View more</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+
+<div class="modal" tabindex="-1" id="addTask">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form th:action="@{'/add-task'}" method="post">
+                <input type="hidden" name="folder.id" th:value="${folder.id}">
+            <div class="modal-header">
+                <h5 class="modal-title">Add task</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Title:</p>
+                <input type="text" class="form-control" name="title">
+                <p>Description:</p>
+                <textarea class="form-control" name="description"> </textarea>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button class="btn btn-primary">Add Task</button>
+            </div>
+           </form>
+        </div>
+    </div>
+</div>
+</div>
+</html>
