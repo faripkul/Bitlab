@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -35,8 +36,8 @@ public class HomeController {
     public String folderDetail(@PathVariable("id")Long id, Model model){
         BitlabFolders folders = folderServices.getFolder(id);
         if(folders!=null) {
-
             List<BitlabTaskCategories> categories=folderServices.getCategories();
+            categories.removeAll(folders.getCategories());
             model.addAttribute("categoriez", categories);
             model.addAttribute("folder", folders);
             model.addAttribute("taskz", taskServices.getTasks(folders));
@@ -47,5 +48,17 @@ public class HomeController {
     public String addTask(BitlabTasks tasks){
         taskServices.addTask(tasks);
         return "redirect:/folder-detail/"+tasks.getFolder().getId();
+    }
+    @PostMapping(value = "/add-category")
+    public String assignCategory(@RequestParam(name = "category_id")Long categoryId,
+                              @RequestParam(name = "folder_id")Long folderId){
+        folderServices.assignCategory(folderId,categoryId);
+        return "redirect:/folder-detail/"+folderId;
+    }
+    @PostMapping(value = "/deleteCategory")
+    public String unAssignCategory(@RequestParam(name = "category_id")Long categoryId,
+                                 @RequestParam(name = "folder_id")Long folderId){
+        folderServices.unAssignCategory(folderId, categoryId);
+        return "redirect:/folder-detail/"+folderId;
     }
 }

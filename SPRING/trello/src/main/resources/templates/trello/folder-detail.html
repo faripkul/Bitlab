@@ -10,11 +10,15 @@
             <div class="card">
                 <div class="card-body" >
                     <h5 class="card-title" th:text="${folder.name}"></h5>
-                    <button class="badge text-bg-primary">Primary</button>
-                    <button class="badge text-bg-secondary">Secondary</button>
-                    <button class="badge text-bg-success">Success</button>
-                    <button class="badge text-bg-danger">Danger</button>
-                    <a href="#" class="btn btn-gradient" data-bs-target="#addCategory" data-bs-toggle="modal">+Add category</a>
+                    <div class="d-flex">
+                    <form th:action="@{'/deleteCategory'}" method="post" th:each="categ:${folder.categories}">
+                        <input type="hidden" name="folder_id" th:value="${folder.id}">
+                        <input type="hidden" name="category_id" th:value="${categ.id}">
+                        <button class="badge text-bg-success me-2 border-0" th:text="${categ.name} + '  x'"></button>
+                    </form>
+                    <a href="#" class="badge text-bg-light me-2 border-0" data-bs-target="#addCategory"
+                       data-bs-toggle="modal">+Add category</a>
+                    </div>
                 </div>
             </div>
          </div>
@@ -24,7 +28,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <form th:action="@{'/add-category'}" method="post">
-                    <input type="hidden" name="folder.id" th:value="${folder.id}">
+                    <input type="hidden" name="folder_id" th:value="${folder.id}">
                     <div class="modal-header">
                         <h5 class="modal-title">Assign category</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -32,6 +36,7 @@
                     <div class="modal-body">
                         <p>CATEGORY NAME:</p>
                         <select  name="category_id" class="form-select">
+                            <option value="-1">Choose Category</option>
                             <option th:each="cat: ${categoriez}" th:text="${cat.name}" th:value="${cat.id}" ></option>
                         </select>
                     </div>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th = "http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout/main.html">
+<div layout:fragment="mainContent">
+
+
+<br><br><br>
+
+    <body class="text-center" >
+    <div class="container">
+        <main class="form-signin w-100 m-auto">
+            <form th:action="@{'/addNews'}" method="post">
+                <h1 class="h3 mb-3 fw-normal">ADD NEWS</h1>
+
+                <div class="form-floating">
+                    <label for="floatingInput">Title</label>
+                    <input type="text" class="form-control" id="floatingInput" name="title" placeholder="insert title">
+                </div>
+                <div class="form-floating">
+                    <label >Content</label>
+                    <textarea class="form-control" name="content" placeholder="insert content"></textarea>
+                </div>
+                <button class="btn btn-lg btn-success mt-3">Add News</button>
+            </form>
+        </main>
+
+    </div>
+
+    </body>
+
+</div>
+</html>

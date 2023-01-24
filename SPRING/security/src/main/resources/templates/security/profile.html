@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th = "http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout/main.html">
+<div layout:fragment="mainContent">
+
+
+<br><br><br>
+   <h1>This is profile of <span th:text="${currentUser.fullName}"></span></h1>
+    <h1 th:text="${#authentication.principal.fullName}"></h1>
+    <br><br>
+    <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%"
+         data-bs-smooth-scroll="true" class="scrollspy-example p-3 rounded-2" tabindex="0"
+           th:each="n: ${newz}" style="background-color:#f1b0b7">
+        <h4 id="scrollspyHeading1" th:text="${n.title}"></h4>
+        <p th:text="${n.content}"></p>
+        <p>Posted by <strong th:text="${n.user.fullName}"></strong></p>
+        at <strong th:text="${n.postDate}"></strong>
+    </div>
+
+</div>
+</html>

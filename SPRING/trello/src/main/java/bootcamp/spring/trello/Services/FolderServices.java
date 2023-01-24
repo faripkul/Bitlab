@@ -7,6 +7,7 @@ import bootcamp.spring.trello.Repository.TaskCategoriesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -33,5 +34,36 @@ public class FolderServices {
 
     public List<BitlabTaskCategories>getCategories(){
         return taskCategoriesRepository.findAll();
+    }
+
+    public void assignCategory(Long folderId,Long categoryId){
+        BitlabFolders folders = getFolder(folderId);
+        if(folders!=null){
+            BitlabTaskCategories categories = taskCategoriesRepository.findById(categoryId).orElseThrow();
+            if(categories!=null){
+                List<BitlabTaskCategories>taskCategories=folders.getCategories();
+                if(taskCategories==null){
+                    taskCategories=new ArrayList<>();
+                }
+                taskCategories.add(categories);
+                folders.setCategories(taskCategories);
+                foldersRepository.save(folders);
+            }
+        }
+    }
+    public void unAssignCategory(Long folderId, Long categoryId){
+        BitlabFolders folders = getFolder(folderId);
+        if(folders!=null){
+            BitlabTaskCategories categories = taskCategoriesRepository.findById(categoryId).orElseThrow();
+            if(categories!=null){
+                List<BitlabTaskCategories>taskCategories=folders.getCategories();
+//                if(taskCategories==null){
+//                    taskCategories=new ArrayList<>();
+//                }
+                taskCategories.remove(categories);
+                folders.setCategories(taskCategories);
+                foldersRepository.save(folders);
+            }
+        }
     }
 }

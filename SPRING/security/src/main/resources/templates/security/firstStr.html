@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout/main.html"
+      xmlns="http://www.w3.org/1999/html">
+<div layout:fragment="mainContent">
+
+
+<!--    <h1>WELCOME TO SECURITY</h1>-->
+<!--    <a th:href="@{'/signin'}" sec:authorize="isAnonymous()">Sign in</a>-->
+<!--    <h1 sec:authorize="isAuthenticated()" th:text="${#authentication.principal.fullName}"></h1>-->
+<!--    <a th:href="@{'/exit'}" sec:authorize="isAnonymous()">Sign out</a>-->
+    <div class="row">
+    <div class="col-12 ">
+    <section class="hero">
+        <div class="container">
+
+<!--                <div class="col-12 offset-md-1 col-md-11">-->
+<!--                    <div class="swiper-container hero-slider">-->
+<!--                        <div class="swiper-wrapper">-->
+                            <div class="swiper-slide slide-content d-flex align-items-center">
+                                <div class="single-slide">
+                                    <h1 data-aos="fade-right" data-aos-delay="200"> WELCOME TO SECURITY
+                                    </h1>
+                                    <h1 data-aos="fade-right" data-aos-delay="200" sec:authorize="isAuthenticated()"
+                                        th:text="${#authentication.principal.fullName}">
+                                    </h1>
+                                    <a data-aos="fade-right" data-aos-delay="900" href="#" class="btn btn-primary">See more</a>
+
+                                </div>
+                            </div>
+<!--                        </div>-->
+
+<!--                    </div>-->
+<!--                </div>-->
+            </div>
+            <!-- Add Control -->
+
+
+        <div class="texture"></div>
+        <div class="diag-bg"></div>
+    </section>
+</div>
+</div>
+</div>
+</html>
