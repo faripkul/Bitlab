@@ -9,10 +9,198 @@
 
 <div class="container">
 
-    <h1>This is Admin panel of <span th:text="${#authentication.principal.fullName}"></span></h1>
-    <a th:href="@{'/profile'}">Profile</a>
-    <a th:href="@{'/home'}">Home</a>
-</div>
+<!--    <h1>This is Admin panel of <span th:text="${#authentication.principal.fullName}"></span></h1>-->
+<!--    <a th:href="@{'/profile'}">Profile</a>-->
+<!--    <a th:href="@{'/home'}">Home</a>-->
+<!--    <br><br><br>-->
+
+    <body class="text-center" >
+    <div class="container">
+        <main class="form-signin w-100 m-auto">
+                <h1 class="h3 mb-3 fw-normal">ADD NEWS</h1>
+
+                <div class="form-floating">
+                    <label>Title</label>
+                    <input type="text" class="form-control"  id="title" placeholder="insert title">
+                </div>
+                <div class="form-floating">
+                    <label >Content</label>
+                    <textarea class="form-control" id="newsContent" placeholder="insert content"></textarea>
+                </div>
+                <button class="btn btn-lg btn-success mt-3" type="button" onclick="addNews()">Add News</button>
+
+            <div class="col-12 mt-3" id="content">
+                <script type="text/javascript">
+                    loadNews();
+                    function loadNews(){
+                        let htmlCode = "";
+                        var xmlHttp = new XMLHttpRequest();
+                        xmlHttp.onreadystatechange=function (){
+                            if(this.readyState==4 && this.status==200){
+                                let newsList=JSON.parse(this.responseText);
+                                for (i=0;i<newsList.length;i++){
+                                    htmlCode+="<div id='news_div_"+newsList[i].id+"' class='row'>";
+                                    htmlCode+="<div class='col-12'>";
+                                    htmlCode+="<div data-bs-spy='scroll' data-bs-target='#navbar-example2' " +
+                                        "data-bs-root-margin='0px 0px -40%' data-bs-smooth-scroll='true' " +
+                                        "class='scrollspy-example p-3 rounded-2' tabindex='0'  style='background-color:#f1b0b7'>";
+                                    htmlCode+="<h4 id='news_title_"+newsList[i].id+"'>" + newsList[i].title + "</h4>";
+                                    htmlCode+="<p id='news_content_"+newsList[i].id+"'>"+newsList[i].content+"</p>";
+                                    htmlCode+="<p>"+ "Posted by" + "<strong>" +"  "+ newsList[i].user.fullName+"</strong>"+" "
+                                        + "at"+" "+ newsList[i].postDate +"</p>";
+                                    htmlCode+="<a href='JavaScript:void(0)' class='btn btn-link' onclick='editNews("+newsList[i].id+")'>EDIT</a>";
+                                    htmlCode+="</div>";
+                                    htmlCode+="</div>";
+                                    htmlCode+="</div>";
+
+                                }
+                            }
+                            content.innerHTML=htmlCode;
+                        }
+                        xmlHttp.open("GET","/api/news",true);
+                        xmlHttp.send();
+                    }
+
+
+
+
+
+
+      function addNews(){
+
+        let json = {"content": newsContent.value, "title": title.value};
+        let body = JSON.stringify(json);
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", '/api/news', true);
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.onreadystatechange = () => {
+            if(xhr.readyState===XMLHttpRequest.DONE && xhr.status===200){
+                let newsObj = JSON.parse(xhr.responseText);
+                if(newsObj.id!=null){
+                  newsContent.value="";
+                  title.value="";
+                  loadNews();
+                }
+            }
+        }
+        xhr.send(body);
+      }
+
+      function  editNews(id){
+        let newsDiv = document.getElementById("news_div_"+id);
+        let newsTitle = document.getElementById("news_title_"+id);
+        let newsContent = document.getElementById("news_content_"+id);
+        let editDiv="";
+        editDiv+="<div class='row mt-2'>";
+        editDiv+="<div class='col-12'>";
+        editDiv+="<label>Edit title</label>";
+        editDiv+="</div>";
+        editDiv+="</div>";
+          editDiv+="<div class='row mt-2'>";
+          editDiv+="<div class='col-12'>";
+          editDiv+="<input type='text' id='update_title_"+id+"' class='form-control' value='"+newsTitle.innerHTML+"'>";
+          editDiv+="</div>";
+          editDiv+="</div>";
+
+          editDiv+="<div class='row mt-2'>";
+          editDiv+="<div class='col-12'>";
+          editDiv+="<label>Edit content</label>";
+          editDiv+="</div>";
+          editDiv+="</div>";
+          editDiv+="<div class='row mt-2'>";
+          editDiv+="<div class='col-12'>";
+          editDiv+="<textarea id='update_content_"+id+"' class='form-control'> "+newsContent.innerHTML+" </textarea>";
+          editDiv+="</div>";
+          editDiv+="</div>";
+
+          editDiv+="<div class='row mt-2'>";
+          editDiv+="<div class='col-12'>";
+          editDiv+="<label>Edit content</label>";
+          editDiv+="</div>";
+          editDiv+="</div>";
+          editDiv+="<div class='row mt-2'>";
+          editDiv+="<div class='col-12'>";
+          editDiv+="<button type='button' class='btn btn-primary' onclick='saveNews("+id+")'> SAVE </button>";
+          editDiv+="<button type='button' class='btn btn-danger ms-2' onclick='deleteNews("+id+")'> DELETE </button>";
+          editDiv+="</div>";
+          editDiv+="</div>";
+
+          newsDiv.innerHTML=editDiv;
+      }
+      function saveNews(id){
+       let newTitle=document.getElementById("update_title_"+id);
+       let newContent=document.getElementById("update_content_"+id);
+
+          let json = {"id":id, "title": newTitle.value, "content": newContent.value};
+          let body = JSON.stringify(json);
+          const xhr = new XMLHttpRequest();
+          xhr.open("PUT", '/api/news', true);
+          xhr.setRequestHeader("Content-Type", "application/json");
+          xhr.onreadystatechange = () => {
+              if(xhr.readyState===XMLHttpRequest.DONE && xhr.status===200){
+                  let newsObj = JSON.parse(xhr.responseText);
+                  if(newsObj.id!=null){
+                      let oldHtml = getNews(id);
+                      let newsDiv = document.getElementById("news_div_"+id);
+                      newsDiv.innerHTML=oldHtml;
+                  }
+              }
+          }
+          xhr.send(body);
+      }
+
+           function getNews(id){
+               let htmlCode = "";
+               var xmlHttp = new XMLHttpRequest();
+               xmlHttp.onreadystatechange=function (){
+                   if(this.readyState==4 && this.status==200){
+                       let news=JSON.parse(this.responseText);
+                           // htmlCode+="<div id='news_div_"+news.id+"' class='row'>";
+                           htmlCode+="<div class='col-12'>";
+                           htmlCode+="<div data-bs-spy='scroll' data-bs-target='#navbar-example2' " +
+                               "data-bs-root-margin='0px 0px -40%' data-bs-smooth-scroll='true' " +
+                               "class='scrollspy-example p-3 rounded-2' tabindex='0'  style='background-color:#f1b0b7'>";
+                           htmlCode+="<h4 id='news_title_"+news.id+"'>" + news.title + "</h4>";
+                           htmlCode+="<p id='news_content_"+news.id+"'>"+news.content+"</p>";
+                           htmlCode+="<p>"+ "Posted by" + "<strong>" +"  "+ news.user.fullName+"</strong>"+" "
+                               + "at"+" "+ news.postDate +"</p>";
+                           htmlCode+="<a href='JavaScript:void(0)' class='btn btn-link' onclick='editNews("+news.id+")'>EDIT</a>";
+                           htmlCode+="</div>";
+                           htmlCode+="</div>";
+                           // htmlCode+="</div>";
+                   }
+               }
+               xmlHttp.open("GET","/api/news/"+id,false);
+               xmlHttp.send();
+               return htmlCode;
+           }
+
+           function deleteNews(id) {
+
+               let conf = confirm("Are you sure?");
+               if (conf) {
+                   const xhr = new XMLHttpRequest();
+                   xhr.open("DELETE", '/api/news/' + id, true);
+                   xhr.onreadystatechange = () => {
+                       if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                           let result = xhr.responseText;
+                           if (result) {
+                               let newsDiv = document.getElementById("news_div_" + id);
+                               newsDiv.innerHTML = "";
+                               newsDiv.style.display="none";
+                           }
+                       }
+                   }
+                   xhr.send();
+               }
+           }
+
+        </script>
+        </div>
+      </main>
+    </div>
+   </body>
+ </div>
 </div>
 </div>
 </html>

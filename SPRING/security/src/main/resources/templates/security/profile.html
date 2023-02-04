@@ -10,14 +10,49 @@
    <h1>This is profile of <span th:text="${currentUser.fullName}"></span></h1>
     <h1 th:text="${#authentication.principal.fullName}"></h1>
     <br><br>
-    <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%"
-         data-bs-smooth-scroll="true" class="scrollspy-example p-3 rounded-2" tabindex="0"
-           th:each="n: ${newz}" style="background-color:#f1b0b7">
-        <h4 id="scrollspyHeading1" th:text="${n.title}"></h4>
-        <p th:text="${n.content}"></p>
-        <p>Posted by <strong th:text="${n.user.fullName}"></strong></p>
-        at <strong th:text="${n.postDate}"></strong>
-    </div>
+<!--    <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%"-->
+<!--         data-bs-smooth-scroll="true" class="scrollspy-example p-3 rounded-2" tabindex="0"-->
+<!--           th:each="n: ${newz}" style="background-color:#f1b0b7">-->
+<!--        <h4 id="scrollspyHeading1" th:text="${n.title}"></h4>-->
+<!--        <p th:text="${n.content}"></p>-->
+<!--        <p>Posted by <strong th:text="${n.user.fullName}"></strong></p>-->
+<!--        at <strong th:text="${n.postDate}"></strong>-->
+<!--    </div>-->
 
-</div>
+
+    <div class="row">
+        <div class="col-12" id="content">
+         <script type="text/javascript">
+             loadNews();
+           function loadNews(){
+           let htmlCode = "";
+            var xmlHttp = new XMLHttpRequest();
+            xmlHttp.onreadystatechange=function (){
+                if(this.readyState==4 && this.status==200){
+                    let newsList=JSON.parse(this.responseText);
+                    for (i=0;i<newsList.length;i++){
+                        htmlCode+="<div class='row'>";
+                        htmlCode+="<div class='col-12'>";
+                        htmlCode+="<div data-bs-spy='scroll' data-bs-target='#navbar-example2' " +
+                            "data-bs-root-margin='0px 0px -40%' data-bs-smooth-scroll='true' " +
+                            "class='scrollspy-example p-3 rounded-2' tabindex='0'  style='background-color:#f1b0b7'>";
+                        htmlCode+="<h4 id='scrollspyHeading1'>" + newsList[i].title + "</h4>";
+                        htmlCode+="<p>"+newsList[i].content+"</p>";
+                        htmlCode+="<p>"+ "Posted by" + "<strong>" +"  "+ newsList[i].user.fullName+"</strong>"+" "
+                            + "at"+" "+ newsList[i].postDate +"</p>";
+                        htmlCode+="</div>";
+                        htmlCode+="</div>";
+                        htmlCode+="</div>";
+
+                    }
+                }
+                content.innerHTML=htmlCode;
+            }
+            xmlHttp.open("GET","/api/news",true);
+            xmlHttp.send();
+           }
+         </script>
+  </div>
+  </div>
+ </div>
 </html>

@@ -16,6 +16,11 @@ public class NewsService {
 
     @Autowired
     private UserService userService;
+    public News addRestNews(News news){
+        news.setPostDate(LocalDateTime.now());
+        return newsRepository.save(news);
+    }
+
     public News addNews(News news){
         news.setUser(userService.getUser());
         news.setPostDate(LocalDateTime.now());
@@ -23,9 +28,20 @@ public class NewsService {
     }
 
     public List<News> getNews(){
-      return newsRepository.findAll();
+      return newsRepository.findAllByOrderByPostDateDesc();
     }
     public News getNews(Long id){
         return newsRepository.findById(id).orElseThrow();
+    }
+    public News updateNews(News news){
+        News oldNews = newsRepository.findById(news.getId()).orElseThrow();
+        oldNews.setTitle(news.getTitle());
+        oldNews.setContent(news.getContent());
+        return newsRepository.save(oldNews);
+    }
+
+    public boolean deleteNews(Long id){
+        newsRepository.deleteById(id);
+        return true;
     }
 }

@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" th:href="@{'/css/bootstrap.css'}">
+    <script type="text/javascript" th:src="@{'/js/bootstrap.bundle.js'}"></script>
+</head>
+
+<body id="page-top" style="background-image: url('/src/ффффф.jpg')">
+
+<nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+    <div class="container">
+        <a class="navbar-brand" href="#page-top">Start Bootstrap</a>
+        <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            Menu
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#portfolio">Portfolio</a></li>
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#about">About</a></li>
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<header class="masthead bg-primary text-dark text-center" style="background-image: url('/src/belyi.jpg')" >
+    <div class="container d-flex align-items-center flex-column">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+        <h1 class="masthead-heading text-uppercase mb-0 text-dark" >МОЙ KZ</h1>
+        <div class="divider-custom divider-light">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
+    </div>
+</header>
+
+<section class="page-section portfolio" id="portfolio" >
+    <div class="container">
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0"></h2>
+        <div class="divider-custom">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
+    </div>
+</section>
+
+<section class="page-section bg-primary text-white mb-0" id="about" style="background-image: url('/src/belyi.jpg')"  >
+<div class="container text-center my-3">
+    <h2 style="color: #1a1e21">Выбери категорию</h2>
+    <div id="carousel-1" class="carousel slide multi-carousel" data-ride="carousel" >
+        <ol class="carousel-indicators">
+            <li data-target="#carousel-1" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-1" data-slide-to="1"></li>
+            <li data-target="#carousel-1" data-slide-to="2"></li>
+            <li data-target="#carousel-1" data-slide-to="3"></li>
+            <li data-target="#carousel-1" data-slide-to="4"></li>
+        </ol>
+        <div class="carousel-inner" role="listbox">
+            <div class="carousel-item active">
+                <div class="item-third"
+                     style="background-image: url('https://source.unsplash.com/juHayWuaaoQ/1200x400')">
+                   <h5>Метка второго слайда</h5>
+                    <p>Некоторый репрезентативный заполнитель для второго слайда.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="item-third"
+                     style="background-image: url('https://source.unsplash.com/eWFdaPRFjwE/1200x400')">
+                    <h5>Метка второго слайда</h5>
+                    <p>Некоторый репрезентативный заполнитель для второго слайда.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="item-third"><img src="https://source.unsplash.com/WLUHO9A_xik/1200x400" alt="#"></div>
+                <div class="carousel-caption d-none ">
+                    <h5>Метка второго слайда</h5>
+                    <p>Некоторый репрезентативный заполнитель для второго слайда.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="item-third"><img src="https://source.unsplash.com/ddLiNMqWAOM/1200x400" alt="#"></div>
+                <div class="carousel-caption d-none ">
+                    <h5>Метка второго слайда</h5>
+                    <p>Некоторый репрезентативный заполнитель для второго слайда.</p>
+                </div>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carousel-1" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only"></span>
+        </a>
+        <a class="carousel-control-next" href="#carousel-1" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only"></span>
+        </a>
+    </div>
+</div>
+<style>
+    body{background-color:#f0f1f3}
+    img{max-width:100%;height:auto}
+    .carousel-inner .carousel-item.active,.carousel-inner .carousel-item-next,.carousel-inner .carousel-item-prev{display:flex}
+    .carousel-inner .carousel-item-right.active,.carousel-inner .carousel-item-next{transform:translateX(25%)}
+    .carousel-inner .carousel-item-left.active,.carousel-inner .carousel-item-prev{transform:translateX(-25%)}
+    .carousel-inner .carousel-item-right,.carousel-inner .carousel-item-left{transform:translateX(0)}
+</style>
+<style>
+    .multi-carousel{overflow:hidden}
+    .multi-carousel .carousel-control-prev,.multi-carousel .carousel-control-next{background:rgba(255,255,255,0.5);width:5%}
+    .multi-carousel .carousel-inner{width:310%;left:-80%}
+    .carousel-inner .carousel-item-right.active,.carousel-inner .carousel-item-next{transform:translateX(75%)}
+    .carousel-inner .carousel-item-left.active,.carousel-inner .carousel-item-prev{transform:translateX(-75%)}
+    .carousel-inner .carousel-item-right,.carousel-inner .carousel-item-left{transform:translateX(0)}
+    .item-third{float:left;width:25%;background-size:cover;height:auto}
+</style>
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
+<script>$('#multiCarousel').carousel({
+    interval: 10000
+})
+$('.carousel .carousel-item').each(function(){
+    var next = $(this).next();
+    if (!next.length) {
+        next = $(this).siblings(':first');
+    }
+    next.children(':first-child').clone().appendTo($(this));
+
+    for (var i=0;i<2;i++) {
+        next=next.next();
+        if (!next.length) {
+            next = $(this).siblings(':first');
+        }
+
+        next.children(':first-child').clone().appendTo($(this));
+    }
+});
+</script>
+<script>$('.multi-carousel .carousel-item').each(function() {
+    var next = $(this).next();
+    if (!next.length) next = $(this).siblings(':first');
+    next.children(':first-child').clone().appendTo($(this));
+});
+$('.multi-carousel .carousel-item').each(function() {
+    var prev = $(this).prev();
+    if (!prev.length) prev = $(this).siblings(':last');
+    prev.children(':nth-last-child(2)').clone().prependTo($(this));
+});</script>
+</section>
+<section class="page-section portfolio" id="portfolioo">
+    <div class="container">
+        <h2 class="page-section-heading text-center text-uppercase  mb-0" style="color: #bacbe6"><b>Актуально сейчас</b></h2>
+        <div class="divider-custom">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-4 mb-5">
+                <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal1">
+                    <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                        <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x">явиачмфысчви</i></div>
+                    </div>
+                    <img class="img-fluid" src="/src/hero_2.jpg" alt="..." />
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 mb-5">
+                <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal2">
+                    <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                        <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x">явпявпям</i></div>
+                    </div>
+                    <img class="img-fluid" src="/src/hero_2.jpg" alt="..." />
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 mb-5">
+                <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal3">
+                    <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                        <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x">ыявпмячмиичясям</i></div>
+                    </div>
+                    <img class="img-fluid" src="/src/hero_2.jpg" alt="..." />
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

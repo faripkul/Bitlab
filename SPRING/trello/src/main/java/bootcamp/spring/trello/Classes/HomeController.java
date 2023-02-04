@@ -24,7 +24,7 @@ public class HomeController {
     @GetMapping(value = "/home")
     public String home(Model model){
         model.addAttribute("folderz", folderServices.getAllFolders());
-        return "/trello/firstStr";
+        return "/trello/example";
     }
 
     @PostMapping(value = "/add-folder")
