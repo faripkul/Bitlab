@@ -31,7 +31,7 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
-        http.csrf().disable();
+       http.csrf().disable();
         AuthenticationManagerBuilder authenticationManagerBuilder=http.getSharedObject(AuthenticationManagerBuilder.class);
 
         authenticationManagerBuilder.userDetailsService(userService()).passwordEncoder(passwordEncoder());

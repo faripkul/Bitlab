@@ -24,7 +24,7 @@ public class HomeController {
     @GetMapping(value = "/home")
     public String home(Model model){
         model.addAttribute("folderz", folderServices.getAllFolders());
-        return "/trello/example";
+        return "/trello/firstStr";
     }
 
     @PostMapping(value = "/add-folder")
@@ -36,9 +36,9 @@ public class HomeController {
     public String folderDetail(@PathVariable("id")Long id, Model model){
         BitlabFolders folders = folderServices.getFolder(id);
         if(folders!=null) {
-            List<BitlabTaskCategories> categories=folderServices.getCategories();
-            categories.removeAll(folders.getCategories());
-            model.addAttribute("categoriez", categories);
+            List<BitlabTaskCategories> categories=folderServices.getCategories();  //это пока что не надо
+            categories.removeAll(folders.getCategories());   //это пока что не надо
+            model.addAttribute("categoriez", categories);  //это пока что не надо
             model.addAttribute("folder", folders);
             model.addAttribute("taskz", taskServices.getTasks(folders));
         }
