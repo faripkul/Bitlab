@@ -41,7 +41,7 @@ public class SecurityConfig {
         http.formLogin()
                 .loginPage("/signin")
                 .failureUrl("/signin?error")
-                .defaultSuccessUrl("/profile")
+                .defaultSuccessUrl("/home")
                 .loginProcessingUrl("/enter")
                 .usernameParameter("user_email")
                 .passwordParameter("user_password");

@@ -22,7 +22,7 @@
 <body class="sb-nav-fixed">
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
   <div class="container px-5">
-    <a class="navbar-brand" href="#!">Мой KZ</a>
+    <a class="navbar-brand" th:href="@{'/home'}">Мой KZ</a>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <li class="nav-item"><a class="nav-link active" aria-current="page" th:href="@{'/home'}">Главная страница</a></li>
@@ -66,7 +66,7 @@
           </a>
           <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
             <nav class="sb-sidenav-menu-nested nav">
-              <a class="nav-link" href="layout-static.html">Хочу посетить</a>
+              <a class="nav-link" th:href="@{'/wantVisit'}">Хочу посетить</a>
               <a class="nav-link" href="layout-sidenav-light.html">Другое</a>
             </nav>
           </div>
@@ -134,12 +134,17 @@
           <div class="col-lg-8">
             <!-- Featured blog post-->
             <div class="card mb-4">
+
               <a href="#!"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5842.045252330615!2d78.32307812676613!3d42.93564986660958!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3886c0e5604528f3%3A0x4fb0bf36fe7869bb!2z0JrQvtC70YzRgdCw0LnRgdC60LjQtSDQvtC30ZHRgNCw!5e0!3m2!1sru!2skz!4v1675674899385!5m2!1sru!2skz" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> </a>
-              <div class="card-body">
+              <div class="card-body" th:each="onp: ${onePlace}">
                 <div class="small text-muted">January 1, 2022</div>
-                <h2 class="card-title">Название места</h2>
-                <p class="card-text">Описание места</p>
-                <a class="btn btn-outline-danger" href="#!">Хочу посетить + </a>
+                <h1 class="card-title" th:text="${onp.name}"></h1>
+                <b><p class="card-text" th:text="${onp.description}"></p></b>
+                <p class="card-text" th:text="${onp.history}"></p>
+                <form th:action="@{/addVisit}" method="post">
+                <input type="hidden" th:value="${onp.id}" name="place_id">
+                <button type="submit">Хочу посетить + </button>
+                </form>
               </div>
             </div>
             <div class="row">
@@ -189,7 +194,73 @@
             <!-- Side widget-->
             <div class="card mb-4">
               <div class="card-header">Комментарии</div>
-              <div class="card-body">вжалопзлахпздфыхвпдахвдыазхпд</div>
+              <div class="card-body">
+
+                          <div class="card-body" id="comment">
+                            <script type="text/javascript">
+                              loadComments();
+                              function loadComments() {
+                                let htmlCode = "";
+                                var xmlHttp = new XMLHttpRequest();
+                                xmlHttp.onreadystatechange = function () {
+                                  if (this.readyState == 4 && this.status == 200) {
+                                    let commentsList = JSON.parse(this.responseText);
+                                    for (i = 0; i < commentsList; i++) {
+                                      htmlCode+="<div class='d-flex flex-start align-items-center'>";
+                                      htmlCode+="<div>";
+                                      htmlCode+="<h6 class='fw-bold text-primary mb-1'>Lily Coleman</h6>";
+                                      htmlCode+="<p class='text-muted small mb-0'>fjfgokdfgok </p>";
+                                      htmlCode+="</div>"
+                                      htmlCode+="</div>"
+                                      htmlCode+="<h6 class='mt-3 mb-4 pb-2'>x;cfmgkod</h6>"
+                                    }
+                                  }
+                                  comment.innerHTML=htmlCode;
+                                }
+                                xmlHttp.open("GET","/comments", true);
+                                xmlHttp.send();
+                              }
+                            </script>
+                          </div>
+
+
+<!--                <div class="card-body">-->
+<!--                  <div class="d-flex flex-start align-items-center">-->
+<!--                    <div>-->
+<!--                      <h6 class="fw-bold text-primary mb-1">Lily Coleman</h6>-->
+<!--                      <p class="text-muted small mb-0">-->
+<!--                        Shared publicly - Jan 2020-->
+<!--                      </p>-->
+<!--                    </div>-->
+<!--                  </div>-->
+
+<!--                  <h6 class="mt-3 mb-4 pb-2">-->
+<!--                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod-->
+<!--                    tempor incididunt ut labore et dolore magna aliqua.-->
+<!--                  </h6>-->
+<!--                </div>-->
+
+
+
+
+                          <div class="card-footer py-3 border-0" style="background-color: #f8f9fa;">
+                            <div class="d-flex flex-start w-100">
+                              <img class="rounded-circle shadow-1-strong me-3"
+                                   src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(19).webp" alt="avatar" width="40"
+                                   height="40" />
+                              <div class="form-outline w-100">
+                           <textarea class="form-control" id="textAreaExample" rows="4"
+                          style="background: #fff;"></textarea>
+                                <label class="form-label" for="textAreaExample">Message</label>
+                              </div>
+                            </div>
+                            <div class="float-end mt-2 pt-1">
+                              <button type="button" class="btn btn-primary btn-sm">Post comment</button>
+                              <button type="button" class="btn btn-outline-primary btn-sm">Cancel</button>
+                            </div>
+                          </div>
+
+              </div>
             </div>
           </div>
         </div>

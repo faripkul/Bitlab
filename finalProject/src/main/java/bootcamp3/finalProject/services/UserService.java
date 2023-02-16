@@ -1,6 +1,7 @@
 package bootcamp3.finalProject.services;
 
 import bootcamp3.finalProject.model.Permission;
+import bootcamp3.finalProject.model.Places;
 import bootcamp3.finalProject.model.User;
 import bootcamp3.finalProject.repository.PermissionRepository;
 import bootcamp3.finalProject.repository.UserRepository;
@@ -88,4 +89,5 @@ public class UserService implements UserDetailsService {
      }
      return  result;
     }
+
 }

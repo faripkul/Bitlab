@@ -16,11 +16,23 @@ public class Places extends BaseEntity {
    @Column(name = "description", columnDefinition = "TEXT")
    private String description;
 
+   @Column(name = "history", columnDefinition = "TEXT")
+   private String history;
+
+
    private LocalDate localDate;
+
+   @Lob
+   @Column(columnDefinition = "MEDIUMBLOB")
+   private String image;
 
    @ManyToOne
    private Category categories;
 
    @ManyToOne
    private Region regions;
+
+
+
+
 }

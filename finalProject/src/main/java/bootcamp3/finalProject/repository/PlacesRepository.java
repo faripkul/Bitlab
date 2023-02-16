@@ -14,4 +14,6 @@ import java.util.List;
 public interface PlacesRepository extends JpaRepository<Places, Long> {
     List<Places>findAllByCategories(Category category);
     List<Places>findAllByCategoriesAndRegions(Category category, Region region);
+//
+//    List<Places>findAllByUsersId();
 }

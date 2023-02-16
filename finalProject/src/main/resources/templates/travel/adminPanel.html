@@ -130,45 +130,99 @@
 
 
 
+  <div class="container">
+    </br>
+    </br>
+    </br>
+ <div id="layoutSidenav_content">
+ <main>
+ <p>Добавить категорию</p>
+  <form th:action="@{'/addCategory'}" method="post">
+    <div class="row mb-3">
+      <label for="inputEmail1" class="col-sm-2 col-form-label">Название</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="inputEmail1" name="name">
+      </div>
+    </div>
+    <div class="row mb-3">
+    <label for="inputEmail3" class="col-sm-2 col-form-label">Описание</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="inputEmail3" name="description">
+    </div>
+  </div>
+    <button class="btn btn-success">Добавить</button>
+  </form>
 
-  <div id="layoutSidenav_content">
-    <main>
-      <div class="container-fluid px-4">
-        <h1 class="mt-4">Какое то название</h1>
-        <ol class="breadcrumb mb-4">
-          <li class="breadcrumb-item active">Какое то подназвание</li>
-        </ol>
-        <div class="row">
-          <div class="col-xl-3 col-md-6">
-            <div class="card bg-warning text-white mb-4">
-              <img src="/src/hero_2.jpg" class="card-img-top" alt="...">
-              <div class="card-body">Название места</div>
-              <div class="card-footer d-flex align-items-center justify-content-between">
-                <a class="small text-white stretched-link" th:href="@{'/infoMesta'}">Подробнее</a>
-                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-              </div>
+   </br>
+   </br>
+   </br>
+        <p>Добавить регион</p>
+        <form th:action="@{'/addRegion'}" method="post">
+          <div class="row mb-3">
+            <label for="inputEmail5" class="col-sm-2 col-form-label">Название</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="inputEmail5" name="name">
             </div>
           </div>
+          <button class="btn btn-success">Добавить</button>
+        </form>
+
+
+
+    </br>
+    </br>
+    </br>
+    <p>Добавить place</p>
+    <form th:action="@{'/addPlaceF'}" method="post" enctype="multipart/form-data">
+
+      <div>
+        <label for="formFile" class="form-label" style="color: #1a1e21">Choose profile picture</label>
+        <input class="form-control" type="file" id="formFile" name="file">
+      </div>
+      <div class="row mb-3">
+        <label for="inputEmail8" class="col-sm-2 col-form-label">Название</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="inputEmail8" name="name">
         </div>
       </div>
+      <div class="row mb-3">
+        <label for="inputEmail9" class="col-sm-2 col-form-label">Описание</label>
+        <div class="col-sm-10">
+          <textarea class="form-control" id="inputEmail9" name="description"></textarea>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <label for="inputEmail10" class="col-sm-2 col-form-label">История</label>
+        <div class="col-sm-10">
+          <textarea class="form-control" id="inputEmail10" name="history"></textarea>
+        </div>
+      </div>
+
+   <div class="row mb-3">
+     <label for="inputEmail8" class="col-sm-2 col-form-label">Регион</label>
+     <div class="col-sm-10" >
+      <select name="region_id" class="form-select" aria-label="Default select example">
+        <option selected>Выбери регион</option>
+        <option th:each="reg: ${regionzz}" th:text="${reg.name}" th:value="${reg.id}"></option>
+      </select>
+     </div>
+   </div>
+
+   <div class="row mb-3">
+     <label for="inputEmail8" class="col-sm-2 col-form-label">Категория</label>
+     <div class="col-sm-10">
+       <select name="category_id" class="form-select" aria-label="Default select example">
+         <option selected>Выбери категорию</option>
+         <option th:each="cat: ${categoriez}" th:text="${cat.name}" th:value="${cat.id}">One</option>
+       </select>
+     </div>
+   </div>
+
+      <button class="btn btn-success">Добавить</button>
+    </form>
     </main>
-
-
-
-
-
-    <footer class="py-4 bg-light mt-auto">
-      <div class="container-fluid px-4">
-        <div class="d-flex align-items-center justify-content-between small">
-          <div class="text-muted">Copyright &copy; Your Website 2022</div>
-          <div>
-            <a href="#">Privacy Policy</a>
-            &middot;
-            <a href="#">Terms &amp; Conditions</a>
-          </div>
-        </div>
-      </div>
-    </footer>
+  </div>
+  </div>
   </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>

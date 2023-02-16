@@ -24,7 +24,7 @@
 <!-- Responsive navbar-->
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
   <div class="container px-5">
-    <a class="navbar-brand" href="#!">Мой KZ</a>
+    <a class="navbar-brand" th:href="@{'/home'}">Мой KZ</a>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <li class="nav-item"><a class="nav-link active" aria-current="page" th:href="@{'/home'}" >Главная страница</a></li>
@@ -65,7 +65,7 @@
           </a>
           <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
             <nav class="sb-sidenav-menu-nested nav">
-              <a class="nav-link" href="layout-static.html">Хочу посетить</a>
+              <a class="nav-link" th:href="@{'/wantVisit'}">Хочу посетить</a>
               <a class="nav-link" href="layout-sidenav-light.html">Другое</a>
             </nav>
           </div>
@@ -127,23 +127,32 @@
   <div id="layoutSidenav_content">
     <main>
       <div class="container-fluid px-4">
-        <h1 class="mt-4">Какое то название</h1>
+
+
+<br>
+        <h1 class="mt-4" th:text="${categoriez.name}"></h1>
         <ol class="breadcrumb mb-4">
-          <li class="breadcrumb-item active">Какое то подназвание</li>
+          <li class="breadcrumb-item active" th:text="${categoriez.description}"></li>
         </ol>
-        <div class="row">
-          <div class="col-xl-3 col-md-6" th:each="catp: ${catplacez}">
-            <div class="card bg-warning text-white mb-4" >
-              <img src="/src/hero_2.jpg" class="card-img-top" alt="...">
-              <div class="card-body"  th:text="${catp.name}"></div>
-              <div class="card-body"  th:text="${catp.description}"></div>
-              <div class="card-footer d-flex align-items-center justify-content-between">
-                <a class="small text-white stretched-link" th:href="@{'/infoMesta'}">Подробнее</a>
-                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+      <div class="row">
+        <div class="card mb-3" style="max-width: 1000px;" th:each="catp: ${catplacez}">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img th:src="@{'data:image/jpeg;base64,' + ${catp.image}}" class="img-fluid rounded-start" alt="...">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h3 class="card-title" th:text="${catp.name}"></h3>
+                <h6 class="card-title" th:text="${catp.regions.name}"></h6>
+                <p class="card-text" th:text="${catp.description}"></p>
               </div>
             </div>
           </div>
+          <div class="card-footer d-flex align-items-center justify-content-between">
+            <a class="small text-dark stretched-link" th:href="@{'/infoMesta/'+${catp.id}}">Подробнее</a>
+          </div>
         </div>
+      </div>
       </div>
     </main>
     <footer class="py-4 bg-light mt-auto">
