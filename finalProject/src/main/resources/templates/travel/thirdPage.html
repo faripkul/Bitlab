@@ -16,24 +16,15 @@
   <title>Dashboard - SB Admin</title>
   <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
   <link href="/css/styless.css" rel="stylesheet" />
-  <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
   <link href="/css/stylesss.css" rel="stylesheet" />
 </head>
-<body class="sb-nav-fixed">
-<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+<body class="sb-nav">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container px-5">
-    <a class="navbar-brand" th:href="@{'/home'}">Мой KZ</a>
+    <img th:src="@{'/src/heart.png'}" class="m-lg-2">
+    <a class="navbar-brand" th:href="@{'/home'}">Мой Казахстан</a>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-        <li class="nav-item"><a class="nav-link active" aria-current="page" th:href="@{'/home'}">Главная страница</a></li>
-        <li class="nav-item">
-          <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-2 my-1 my-md-0">
-            <div class="input-group">
-              <input class="form-control" type="text" placeholder="Поиск ..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
-              <button class="btn btn-outline-light" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
-            </div>
-          </form>
-        </li>
       </ul>
     </div>
   </div>
@@ -51,17 +42,14 @@
             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
           </a>
           <div class="collapse" id="collapseLayoutss" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-            <nav class="sb-sidenav-menu-nested nav">
-              <a class="nav-link" href="layout-static.html">Алматинская область</a>
-              <a class="nav-link" href="layout-sidenav-light.html">Туркестанская область</a>
-              <a class="nav-link" href="layout-static.html">Мангистауская область</a>
-              <a class="nav-link" href="layout-static.html">Все регионы</a>
+            <nav class="sb-sidenav-menu-nested nav" th:each="reg: ${regionz}">
+              <a class="nav-link" th:href="@{'/category_region_places/'+${reg.id}+'/'+${categoriez.id}}" th:text="${reg.name}"></a>
             </nav>
           </div>
           <div class="sb-sidenav-menu-heading">Interface</div>
-          <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+          <a class="nav-link collapsed" th:href="@{'/wantVisit'}" aria-expanded="false" aria-controls="collapseLayouts">
             <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-            Личный кабинет
+            Список избранных мест кабинет
             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
           </a>
           <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
@@ -101,27 +89,11 @@
               </div>
             </nav>
           </div>
-          <div class="sb-sidenav-menu-heading">Дополнительно</div>
-          <a class="nav-link"  href="#" data-bs-toggle="collapse" data-bs-target="#adminPanel" aria-expanded="false" aria-controls="pagesCollapseError">
-            Админ панель
-            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-          </a>
-          <div class="collapse" id="adminPanel" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
-            <nav class="sb-sidenav-menu-nested nav">
-              <a class="nav-link" href="#">Добавить категорию</a>
-              <a class="nav-link" href="#">Добавить место</a>
-              <a class="nav-link" href="#">Добавить регион</a>
-            </nav>
-          </div>
-          <a class="nav-link" href="tables.html">
-            <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-            Настройки
-          </a>
+          <div class="sb-sidenav-menu-heading"></div>
         </div>
       </div>
       <div class="sb-sidenav-footer">
-        <div class="small">Logged in as:</div>
-        Start Bootstrap
+        <div class="small"></div>
       </div>
     </nav>
   </div>
@@ -131,27 +103,33 @@
       <div class="container">
         <div class="row">
           <!-- Blog entries-->
-          <div class="col-lg-8">
+          <div class="col-lg-8" >
             <!-- Featured blog post-->
             <div class="card mb-4">
 
-              <a href="#!"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5842.045252330615!2d78.32307812676613!3d42.93564986660958!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3886c0e5604528f3%3A0x4fb0bf36fe7869bb!2z0JrQvtC70YzRgdCw0LnRgdC60LjQtSDQvtC30ZHRgNCw!5e0!3m2!1sru!2skz!4v1675674899385!5m2!1sru!2skz" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> </a>
-              <div class="card-body" th:each="onp: ${onePlace}">
-                <div class="small text-muted">January 1, 2022</div>
-                <h1 class="card-title" th:text="${onp.name}"></h1>
-                <b><p class="card-text" th:text="${onp.description}"></p></b>
-                <p class="card-text" th:text="${onp.history}"></p>
-                <form th:action="@{/addVisit}" method="post">
-                <input type="hidden" th:value="${onp.id}" name="place_id">
-                <button type="submit">Хочу посетить + </button>
+              <a href="#!"><img class="card-img-top" th:src="@{'data:image/jpeg;base64,' + ${onePlace.image}}" width="100%" height="350" alt="..." /></a>
+
+              <div class="card-body" th:if="${onePlace!=null}">
+                <input type="hidden" th:value="${onePlace.id}" id="placeId" name="placeId">
+                <div class="small text-muted" th:text="${onePlace.localDate}"></div>
+                <h1 class="card-title" th:text="${onePlace.name}"></h1>
+                <b><p class="card-text" th:text="${onePlace.description}"></p></b>
+                <p class="card-text" th:text="${onePlace.history}"></p>
+                <div class="d-flex justify-content-between tm-text-gray">
+                  <form th:action="@{'/addFavPlaces'}" method="post">
+                    <input type="hidden" th:value="${onePlace.name}" name="name">
+                    <input type="hidden" th:value="${onePlace.description}" name="description">
+                    <input type="hidden" th:value="${onePlace.id}" name="placeId">
+                  <button type="submit" class="form-control" style="color: darkturquoise">Хочу посетить + </button>
                 </form>
+                </div>
               </div>
             </div>
             <div class="row">
               <div class="col-lg-6">
                 <!-- Blog post-->
                 <div class="card mb-4">
-                  <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
+                  <a href="#!"><img class="card-img-top" th:src="@{'data:imagethree/jpeg;base64,' + ${onePlace.imagethree}}" width="50%" height="250" alt="..." /></a>
                   <div class="card-body">
                     <div class="small text-muted">January 1, 2022</div>
                   </div>
@@ -160,7 +138,7 @@
               <div class="col-lg-6">
                 <!-- Blog post-->
                 <div class="card mb-4">
-                  <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
+                  <a href="#!"><img class="card-img-top" th:src="@{'data:imagetwo/jpeg;base64,' + ${onePlace.imagetwo}}" width="100%" height="250" alt="..." /></a>
                   <div class="card-body">
                     <div class="small text-muted">January 1, 2022</div>
                   </div>
@@ -171,23 +149,25 @@
           <!-- Side widgets-->
           <div class="col-lg-4">
             <div class="card mb-4">
-              <div class="card-header">Какие то ссылки</div>
+              <div class="card-header">Добавить комментарий</div>
               <div class="card-body">
                 <div class="row">
-                  <div class="col-sm-6">
-                    <ul class="list-unstyled mb-0">
-                      <li><a href="#!">ФФФФ</a></li>
-                      <li><a href="#!">ААААА</a></li>
-                      <li><a href="#!">ИИИИИ</a></li>
-                    </ul>
-                  </div>
-                  <div class="col-sm-6">
-                    <ul class="list-unstyled mb-0">
-                      <li><a href="#!">ЫЫЫЫЫ</a></li>
-                      <li><a href="#!">ЙЙЙЙЙЙ</a></li>
-                      <li><a href="#!">ИИИИИИ</a></li>
-                    </ul>
-                  </div>
+                    <div class="card-footer py-3 border-0" style="background-color: white;">
+                      <div class="d-flex flex-start w-100">
+                        <img class="rounded-circle shadow-1-strong me-3"
+                             src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(19).webp" alt="avatar" width="40"
+                             height="40" />
+                        <div class="form-outline w-100">
+                           <textarea class="form-control" id="commentText" rows="4"
+                                     style="background: #fff;"></textarea>
+                        </div>
+                        <input type="hidden" id="plId">
+                      </div>
+                      <div class="float-end mt-2 pt-1">
+                        <button id="postComment" type="button" class="btn btn-primary btn-sm" >Добавить</button>
+                        <button type="button" class="btn btn-outline-primary btn-sm">Отмена</button>
+                      </div>
+                    </div>
                 </div>
               </div>
             </div>
@@ -195,70 +175,67 @@
             <div class="card mb-4">
               <div class="card-header">Комментарии</div>
               <div class="card-body">
+                 <div class="card-body" id="commentsOfPlace">
+                   </div>
+                    <script>
 
-                          <div class="card-body" id="comment">
-                            <script type="text/javascript">
-                              loadComments();
-                              function loadComments() {
-                                let htmlCode = "";
-                                var xmlHttp = new XMLHttpRequest();
-                                xmlHttp.onreadystatechange = function () {
-                                  if (this.readyState == 4 && this.status == 200) {
-                                    let commentsList = JSON.parse(this.responseText);
-                                    for (i = 0; i < commentsList; i++) {
-                                      htmlCode+="<div class='d-flex flex-start align-items-center'>";
-                                      htmlCode+="<div>";
-                                      htmlCode+="<h6 class='fw-bold text-primary mb-1'>Lily Coleman</h6>";
-                                      htmlCode+="<p class='text-muted small mb-0'>fjfgokdfgok </p>";
-                                      htmlCode+="</div>"
-                                      htmlCode+="</div>"
-                                      htmlCode+="<h6 class='mt-3 mb-4 pb-2'>x;cfmgkod</h6>"
-                                    }
-                                  }
-                                  comment.innerHTML=htmlCode;
-                                }
-                                xmlHttp.open("GET","/comments", true);
-                                xmlHttp.send();
-                              }
-                            </script>
-                          </div>
+                      loadComments();
+                      function loadComments() {
+                        let id = placeId.value;
+                        console.log(id)
+                        let htmlCode = "";
+                        var xmlHttp = new XMLHttpRequest();
+                        xmlHttp.onreadystatechange = function () {
+                          if (this.readyState == 4 && this.status == 200) {
+                            let commentList = JSON.parse(this.responseText);
+                            for (i = 0; i < commentList.length; i++) {
 
+                                htmlCode +="<div className='col-md-12 col-lg-10'>"
+                                htmlCode +="<div className='card text-dark'>"
+                                htmlCode +="<div className='card-body p-4'>"
+                                htmlCode +="<div className='d-flex flex-start'>"
+                                htmlCode +="<div>"
+                                htmlCode +="<h6 className='fw-bold mb-1'>"+commentList[i].user.fullName +"</h6>"
+                                htmlCode +="<div className='d-flex align-items-center mb-3'>"
+                                htmlCode +="<p className='mb-0'>"+ commentList[i].localDateTime +"</p>"
+                                htmlCode +="</div>"
+                                htmlCode +="<p className='mb-0'>"+ commentList[i].text +"</p>"
+                                htmlCode +="</div>"
+                                htmlCode +="</div>"
+                                htmlCode +="</div>"
+                                htmlCode +="</div>"
+                                htmlCode +="</div>";
+                            }
+                          }
+                          commentsOfPlace.innerHTML=htmlCode;
+                        }
+                        xmlHttp.open("GET","/comments/"+id,true);
+                        xmlHttp.setRequestHeader("Content-Type", "application/json");
+                        xmlHttp.send();
+                      }
 
-<!--                <div class="card-body">-->
-<!--                  <div class="d-flex flex-start align-items-center">-->
-<!--                    <div>-->
-<!--                      <h6 class="fw-bold text-primary mb-1">Lily Coleman</h6>-->
-<!--                      <p class="text-muted small mb-0">-->
-<!--                        Shared publicly - Jan 2020-->
-<!--                      </p>-->
-<!--                    </div>-->
-<!--                  </div>-->
+                      postComment.addEventListener('click', addNews)
+                      function addNews(){
 
-<!--                  <h6 class="mt-3 mb-4 pb-2">-->
-<!--                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod-->
-<!--                    tempor incididunt ut labore et dolore magna aliqua.-->
-<!--                  </h6>-->
-<!--                </div>-->
+                        let json = {"text": commentText.value };
+                        let id = placeId.value;
+                        let body = JSON.stringify(json);
+                        console.log(body)
+                        const xhr = new XMLHttpRequest();
+                        xhr.open("POST", '/comments/'+id, true);
+                        xhr.setRequestHeader("Content-Type", "application/json");
+                        xhr.onreadystatechange = function () {
+                          // if(xhr.readyState===XMLHttpRequest.DONE && xhr.status===200) {
 
+                            commentText.value = "";
+                            loadComments();
 
+                          // }
+                        }
+                        xhr.send(body);
+                      }
 
-
-                          <div class="card-footer py-3 border-0" style="background-color: #f8f9fa;">
-                            <div class="d-flex flex-start w-100">
-                              <img class="rounded-circle shadow-1-strong me-3"
-                                   src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(19).webp" alt="avatar" width="40"
-                                   height="40" />
-                              <div class="form-outline w-100">
-                           <textarea class="form-control" id="textAreaExample" rows="4"
-                          style="background: #fff;"></textarea>
-                                <label class="form-label" for="textAreaExample">Message</label>
-                              </div>
-                            </div>
-                            <div class="float-end mt-2 pt-1">
-                              <button type="button" class="btn btn-primary btn-sm">Post comment</button>
-                              <button type="button" class="btn btn-outline-primary btn-sm">Cancel</button>
-                            </div>
-                          </div>
+                    </script>
 
               </div>
             </div>
@@ -280,12 +257,6 @@
     </footer>
   </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-<script src="js/scripts.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-<script src="js/chart-area-demo.js"></script>
-<script src="js/chart-bar-demo.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
-<script src="js/datatables-simple-demo.js"></script>
 </body>
 </html>
+

@@ -26,12 +26,11 @@ public class User extends BaseEntity implements UserDetails {
 //    @ManyToMany(fetch = FetchType.EAGER)
 //    List<Places> places;
 
-    @ManyToMany
-    private List<Places> places;
-
     @ManyToMany(fetch = FetchType.EAGER)
     List<Permission>permissions;
 
+    @ManyToMany(fetch = FetchType.LAZY)
+    List<Places> places;
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return permissions;

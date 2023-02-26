@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Текст</th>
+            <th scope="col">Удалить</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="o: ${offerz}">
+            <th scope="row" th:text="${o.id}" ></th>
+            <td th:text="${o.text}"></td>
+            <td><button> - </button></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div id="offers-block"></div>
+
+<!--<script>
+    $(document).ready(function () {
+        $.get('/offer', function (data, status) {
+            // Все предложения в виде html
+            let offerBlocks = data.reduce(function (blocks, offer) {
+                return blocks.concat(`<p>${offer.text}</p>`);
+            }, '');
+
+            $('#offers-block').html(offerBlocks);
+        });
+    });
+</script>-->
+
+</body>
+</html>

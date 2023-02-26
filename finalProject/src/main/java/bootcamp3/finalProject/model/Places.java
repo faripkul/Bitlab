@@ -26,13 +26,17 @@ public class Places extends BaseEntity {
    @Column(columnDefinition = "MEDIUMBLOB")
    private String image;
 
+   @Lob
+   @Column(columnDefinition = "MEDIUMBLOB")
+   private String imagetwo;
+
+   @Lob
+   @Column(columnDefinition = "MEDIUMBLOB")
+   private String imagethree;
+
    @ManyToOne
    private Category categories;
 
    @ManyToOne
    private Region regions;
-
-
-
-
 }

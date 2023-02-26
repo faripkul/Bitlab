@@ -136,8 +136,16 @@
     </br>
  <div id="layoutSidenav_content">
  <main>
- <p>Добавить категорию</p>
+
+
+
+   <h3><b>Добавить категорию</b></h3>
   <form th:action="@{'/addCategory'}" method="post">
+    <div class="row mb-3">
+      <label for="formFile" class="form-label" style="color: #1a1e21">Выбери фото для категорий </label>
+      <input class="form-control" type="file" id="formFile5" name="file">
+    </div>
+    <br>
     <div class="row mb-3">
       <label for="inputEmail1" class="col-sm-2 col-form-label">Название</label>
       <div class="col-sm-10">
@@ -156,7 +164,7 @@
    </br>
    </br>
    </br>
-        <p>Добавить регион</p>
+   <h3><b>Добавить регион</b></h3>
         <form th:action="@{'/addRegion'}" method="post">
           <div class="row mb-3">
             <label for="inputEmail5" class="col-sm-2 col-form-label">Название</label>
@@ -172,13 +180,32 @@
     </br>
     </br>
     </br>
-    <p>Добавить place</p>
+
+    <div class="modal-body">
+      <div class="alert alert-danger alert-dismissible fade show" role="alert" th:if = "${param.usererror!=null}">
+        <p style="color: #dc3545">Новое место не длбавлено!</p>
+      </div>
+      <div class="alert alert-success alert-dismissible fade show" role="alert"
+           th:if = "${param.success!=null}">
+        <p style="color: #198754">Новое место добавлено!</p>
+      </div>
+
+      <h3><b>Добавить место</b></h3>
     <form th:action="@{'/addPlaceF'}" method="post" enctype="multipart/form-data">
 
-      <div>
-        <label for="formFile" class="form-label" style="color: #1a1e21">Choose profile picture</label>
+      <div class="row mb-3">
+        <label for="formFile" class="form-label" style="color: #1a1e21">Выберите главное фото для места</label>
         <input class="form-control" type="file" id="formFile" name="file">
       </div>
+      <div class="row mb-3">
+        <label for="formFile" class="form-label" style="color: #1a1e21">Выберите дополнительное фото для места</label>
+        <input class="form-control" type="file" id="formFile2" name="filetwo">
+      </div>
+      <div class="row mb-3">
+        <label for="formFile" class="form-label" style="color: #1a1e21">Выберите дополнительное фото для места</label>
+        <input class="form-control" type="file" id="formFile3" name="filethree">
+      </div>
+      <br>
       <div class="row mb-3">
         <label for="inputEmail8" class="col-sm-2 col-form-label">Название</label>
         <div class="col-sm-10">
@@ -220,6 +247,7 @@
 
       <button class="btn btn-success">Добавить</button>
     </form>
+    </div>
     </main>
   </div>
   </div>

@@ -1,25 +1,17 @@
 package bootcamp3.finalProject.controller;
 
 
-import bootcamp3.finalProject.model.Category;
-import bootcamp3.finalProject.model.Places;
-import bootcamp3.finalProject.model.Region;
+import bootcamp3.finalProject.model.*;
 import bootcamp3.finalProject.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Base64;
-import java.util.Date;
 import java.util.List;
 
 
@@ -30,6 +22,10 @@ public class MainController {
     private UserService userService;
 
     @Autowired
+    private FavoriteService favoriteService;
+
+
+    @Autowired
     private CategoryService categoryService;
 
     @Autowired
@@ -38,6 +34,8 @@ public class MainController {
     @Autowired
     private RegionService regionService;
 
+    @Autowired
+    private OfferService offerService;
 
     @Autowired
     private FileUploadService fileUploadService;
@@ -46,6 +44,11 @@ public class MainController {
     public String home(Model model) {
         model.addAttribute("categoriez", categoryService.getAllCategories());
         return "/travel/primer";
+    }
+
+    @GetMapping(value = "/test")
+    public String test(Model model) {
+        return "/travel/test";
     }
 
     @GetMapping(value = "/signin")
@@ -129,8 +132,10 @@ public class MainController {
 
 
     @PostMapping(value = "/addCategory")
-    public String addCategory(Category category) {
-        categoryService.addCategory(category);
+    public String addCategory(@RequestParam(name = "name") String name,
+                              @RequestParam(name = "description") String description,
+                              @RequestParam(name = "file") MultipartFile file) {
+        categoryService.addCategoryF(name, description, file);
         return "redirect:/adminPanel";
     }
 
@@ -158,6 +163,13 @@ public class MainController {
         return "redirect:/adminPanel";
     }
 
+    @PostMapping(value = "/deletePlace")
+    public String deletePlace(@RequestParam(name = "placId")Long placeId,
+                              @RequestParam(name = "categId")Long catId){
+        placeService.deletePlaces(placeId);
+        return "redirect:/category-places/"+catId;
+    }
+
     @PostMapping(value = "/addRegion")
     public String addRegion(Region region) {
         regionService.addRegion(region);
@@ -168,12 +180,14 @@ public class MainController {
     public String categoryRegionPlaces(@PathVariable("regId") Long regId,
                                        @PathVariable("catId") Long catId, Model model) {
         Category category = categoryService.getCategory(catId);
+        List<Region> regions = regionService.getAllRegions();
         Region region = regionService.getRegion(regId);
         if (category != null && region != null) {
             model.addAttribute("categoriez", category);
+            model.addAttribute("regionz", regions);
             model.addAttribute("catRegPlasez", placeService.getFinalPlaces(category, region));
         }
-        return "travel/finishFilterPage";
+        return "travel/test";
     }
 
     @GetMapping(value = "/infoMesta/{id}")
@@ -191,18 +205,18 @@ public class MainController {
         return "/travel/adminPanel";
     }
 
-    @GetMapping(value = "/wantVisit/{place_id}")
-    public String wantVisit(@PathVariable(name = "place_id") Long id, Model model) {
-     model.addAttribute("plasez",placeService.getPlace(id));
-     model.addAttribute("userz", userService.getUser());
-     return "/travel/wantVisit";
-    }
-
-     @PostMapping(value = "/addVisit")
-     public String addVisitPlaces(@RequestParam(name="place_id") Long placeId){
-        placeService.assignPlace(placeId);
-        return "redirect:/wantVisit/"+placeId;
-    }
+//    @GetMapping(value = "/wantVisit")
+//    public String wantVisit(Model model, @PathVariable(name = "id") Long id) {
+//        model.addAttribute("favplacez",favoriteService.getFavByUserId(id));
+//        return "/travel/wantVisit";
+//    }
+//
+//     @PostMapping(value = "/addVisit")
+//     public String addVisitPlaces(@RequestParam(name="place_id") Long placeId){
+//        User user = userService.getUser();
+//        userService.assignPlaces(user, placeId);
+//        return "redirect:/wantVisit";
+//    }
 
 
     @PostMapping(value = "/uploadpicture")
@@ -216,12 +230,41 @@ public class MainController {
                              @RequestParam(name = "description") String description,
                              @RequestParam(name = "history") String history,
                              @RequestParam(name = "file") MultipartFile file,
+                             @RequestParam(name = "filetwo") MultipartFile fileTwo,
+                             @RequestParam(name = "filethree") MultipartFile fileThree,
                             @RequestParam(name = "region_id") Long regId,
                             @RequestParam(name = "category_id") Long catId) {
 
-        placeService.addPlacesF(file, name, description, history,regId, catId);
+        placeService.addPlacesF(file,fileTwo,fileThree, name, description, history,regId, catId);
         return "redirect:/adminPanel";
 
+    }
+
+
+    @PostMapping(value = "/addFavPlaces")
+    public String addFavPlaces(Favorites favorites, @RequestParam(name = "placeId") Long placeId,
+                               @RequestParam(name = "name") String name,
+                               @RequestParam(name = "description") String description) {
+        favoriteService.addFavPlace(favorites, placeId, name,description);
+        return "redirect:/wantVisit";
+    }
+
+    @GetMapping(value = "/wantVisit")
+    public String getAllFavPlaces(Model model){
+        model.addAttribute("favoritez",favoriteService.getAllFavPlaces(userService.getUser()));
+        return "/travel/wantVisit";
+    }
+
+    @PostMapping(value = "/addOffer")
+    public String addOffer(Offer offer) {
+        regionService.addOffer(offer);
+        return "redirect:/adminPanel";
+    }
+
+    @GetMapping(value = "/offer")
+    public String getOffer(Model model){
+        model.addAttribute("offerz", offerService.getOffers()) ;
+        return "/travel/offers";
     }
 }
 

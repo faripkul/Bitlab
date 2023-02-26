@@ -133,22 +133,21 @@
           <tr>
             <th scope="col">ID</th>
             <th scope="col">Название</th>
-            <th scope="col">Регион</th>
+            <th scope="col">Описание</th>
+            <th scope="col">Дата добавления</th>
             <th scope="col">Удалить из списка</th>
           </tr>
           </thead>
           <tbody>
-          <tr th:each="p: ${plasez}">
-            <th scope="row">1</th>
-            <td th:text="${p.name}"></td>
-            <td th:text="${p.regions.name}"></td>
+          <tr th:each="f: ${favoritez}">
+            <th scope="row" th:value="${f.id}" th:text="${f.id}" ></th>
+            <td th:text="${f.name}"></td>
+            <td th:text="${f.description}"></td>
+            <td th:text="${f.localDateTime}"></td>
             <td><button> - </button></td>
           </tr>
           </tbody>
         </table>
-
-
-
       </div>
     </main>
     <footer class="py-4 bg-light mt-auto">

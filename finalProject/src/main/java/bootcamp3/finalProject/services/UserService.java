@@ -4,6 +4,7 @@ import bootcamp3.finalProject.model.Permission;
 import bootcamp3.finalProject.model.Places;
 import bootcamp3.finalProject.model.User;
 import bootcamp3.finalProject.repository.PermissionRepository;
+import bootcamp3.finalProject.repository.PlacesRepository;
 import bootcamp3.finalProject.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
@@ -22,6 +23,10 @@ public class UserService implements UserDetailsService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private PlacesRepository placesRepository;
+
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -90,4 +95,31 @@ public class UserService implements UserDetailsService {
      return  result;
     }
 
+
+    public void assignPlaces(User user,Long placeId){
+        if(user!=null){
+            Places places = placesRepository.findById(placeId).orElseThrow();
+            if(places!=null){
+                List<Places> places1 = user.getPlaces();
+                if(places1 == null){
+                    places1 = new ArrayList<>();
+                }
+                places1.add(places);
+                user.setPlaces(places1);
+                userRepository.save(user);
+            }
+        }
+    }
+
+    public void unAssignPlaces(User user,Long placeId){
+        if(user != null){
+            Places places = placesRepository.findById(placeId).orElseThrow();
+            if(places!=null){
+                List<Places>places1 = user.getPlaces();
+                places1.remove(places);
+                user.setPlaces(places1);
+                userRepository.save(user);
+            }
+        }
+    }
 }

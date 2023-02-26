@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Small Business - Start Bootstrap Template</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="/src/favicon.ico" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="/css/styles.css" rel="stylesheet" />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Dashboard - SB Admin</title>
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+    <link href="/css/styless.css" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="/css/templatemo-style.css">
+</head>
+<body class="sb-nav">
+<!-- Responsive navbar-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container px-5">
+        <img th:src="@{'/src/heart.png'}" class="m-lg-2">
+        <a class="navbar-brand" th:href="@{'/home'}">Мой Казахстан</a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- Page Content-->
+<div id="layoutSidenav">
+    <div id="layoutSidenav_nav">
+        <nav class="sb-sidenav accordion sb-sidenav-light" id="sidenavAccordion">
+            <div class="sb-sidenav-menu">
+                <div class="nav">
+                    <div class="sb-sidenav-menu-heading">Фари</div>
+                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutss" aria-expanded="false" aria-controls="collapseLayouts">
+                        <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                        Выберите регион
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                    </a>
+                    <div class="collapse" id="collapseLayoutss" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                        <nav class="sb-sidenav-menu-nested nav" th:each="reg: ${regionz}">
+                            <a class="nav-link" th:href="@{'/category_region_places/'+${reg.id}+'/'+${categoriez.id}}" th:text="${reg.name}"></a>
+                        </nav>
+                    </div>
+                    <div class="sb-sidenav-menu-heading">Interface</div>
+                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                        <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                        Личный кабинет
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                    </a>
+                    <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                        <nav class="sb-sidenav-menu-nested nav">
+                            <a class="nav-link" th:href="@{'/wantVisit'}">Хочу посетить</a>
+                            <a class="nav-link" href="layout-sidenav-light.html">Другое</a>
+                        </nav>
+                    </div>
+                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+                        <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                        Страницы
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                    </a>
+                    <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
+                        <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                                Аутентификация
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="login.html">Login</a>
+                                    <a class="nav-link" href="register.html">Register</a>
+                                    <a class="nav-link" href="password.html">Сменить пароль</a>
+                                </nav>
+                            </div>
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
+                                Error
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="401.html">401 Page</a>
+                                    <a class="nav-link" href="404.html">404 Page</a>
+                                    <a class="nav-link" href="500.html">500 Page</a>
+                                </nav>
+                            </div>
+                        </nav>
+                    </div>
+                    <div class="sb-sidenav-menu-heading"></div>
+                </div>
+            </div>
+            <div class="sb-sidenav-footer">
+                <div class="small"></div>
+            </div>
+        </nav>
+    </div>
+    <div id="layoutSidenav_content">
+        <main>
+            <div class="container-fluid px-4">
+                <div class="tm-hero d-flex justify-content-center align-items-center" id="tm-video-container">
+                    <video autoplay muted loop id="tm-video">
+                        <source th:src="@{'/video/hero.mp4'}" type="video/mp4">
+                    </video>
+                    <i id="tm-video-control-button" class="fas fa-pause"></i>
+                    <form class="d-flex position-absolute tm-search-form">
+                        <input class="form-control tm-search-input" type="search" placeholder="Поиск" aria-label="Search">
+                        <button class="btn btn-outline tm-search-btn" style="background-color: #4e555b" type="submit">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
+                </div>
+                <h1 class="mt-4" th:text="${categoriez.name}"></h1>
+                <ol class="breadcrumb mb-4">
+                    <li class="breadcrumb-item active" th:text="${categoriez.description}"></li>
+                </ol>
+
+                <div class="row tm-mb-90 tm-gallery w-100 h-100" >
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5" th:each="catReg:${catRegPlasez}">
+                        <figure class="effect-ming tm-video-item" style="width: 250px; height: 250px;">
+                            <img th:src="@{'data:image/jpeg;base64,' + ${catReg.image}}" alt="Image" class="img-fluid" style="height: 100%; width: 100%; object-fit: cover;">
+                            <figcaption class="d-flex align-items-center justify-content-center">
+                                <h2 th:text="${catReg.name}"></h2>
+                                <a th:href="@{'/infoMesta/'+${catReg.id}}">Подробнее</a>
+                            </figcaption>
+                        </figure>
+                        <div class="d-flex justify-content-between tm-text-gray">
+                            <span th:text="${catReg.regions.name}"></span>
+                        </div>
+                        <br>
+                    </div>
+                </div>
+
+
+            </div>
+        </main>
+        <footer class="py-4 bg-light mt-auto">
+            <div class="container-fluid px-4">
+                <div class="d-flex align-items-center justify-content-between small">
+                    <div class="text-muted">Copyright &copy; Fari 2023</div>
+                </div>
+            </div>
+        </footer>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<script src="js/scripts.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+<script src="js/chart-area-demo.js"></script>
+<script src="js/chart-bar-demo.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+<script src="js/datatables-simple-demo.js"></script>
+
+<script>
+    $(window).on("load", function() {
+        $('body').addClass('loaded');
+    });
+
+    $(function(){
+        /************** Video background *********/
+
+        function setVideoSize() {
+            const vidWidth = 1280;
+            const vidHeight = 720;
+            const maxVidHeight = 400;
+            let windowWidth = window.innerWidth;
+            let newVidWidth = windowWidth;
+            let newVidHeight = windowWidth * vidHeight / vidWidth;
+            let marginLeft = 0;
+            let marginTop = 0;
+
+            if (newVidHeight < maxVidHeight) {
+                newVidHeight = maxVidHeight;
+                newVidWidth = newVidHeight * vidWidth / vidHeight;
+            }
+
+            if(newVidWidth > windowWidth) {
+                marginLeft = -((newVidWidth - windowWidth) / 2);
+            }
+
+            if(newVidHeight > maxVidHeight) {
+                marginTop = -((newVidHeight - $('#tm-video-container').height()) / 2);
+            }
+
+            const tmVideo = $('#tm-video');
+
+            tmVideo.css('width', newVidWidth);
+            tmVideo.css('height', newVidHeight);
+            tmVideo.css('margin-left', marginLeft);
+            tmVideo.css('margin-top', marginTop);
+        }
+
+        setVideoSize();
+
+        // Set video background size based on window size
+        let timeout;
+        window.onresize = function () {
+            clearTimeout(timeout);
+            timeout = setTimeout(setVideoSize, 100);
+        };
+
+        // Play/Pause button for video background
+        const btn = $("#tm-video-control-button");
+
+        btn.on("click", function (e) {
+            const video = document.getElementById("tm-video");
+            $(this).removeClass();
+
+            if (video.paused) {
+                video.play();
+                $(this).addClass("fas fa-pause");
+            } else {
+                video.pause();
+                $(this).addClass("fas fa-play");
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
