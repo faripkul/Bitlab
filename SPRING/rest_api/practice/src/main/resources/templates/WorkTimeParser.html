@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Имя</th>
+            <th scope="col">Понедельник</th>
+            <th scope="col">Вторник</th>
+            <th scope="col">Среда</th>
+            <th scope="col">Четверг</th>
+            <th scope="col">Пятница</th>
+            <th scope="col">Суббота</th>
+            <th scope="col">Воскресенье</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="e: ${results}">
+            <td th:each="i: ${e}" th:text="${i}"></td>
+        </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

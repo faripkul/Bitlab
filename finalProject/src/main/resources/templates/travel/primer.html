@@ -46,9 +46,9 @@
 
   <div class="container-fluid px-4">
 
-    <h1 class="mt-4">Какое то название</h1>
+    <h5 class="mt-4"><em>Дүниенің көрінген не көрінбеген сырын түгелдеп, ең болмаса денелеп білмесе, адамдықтың орны болмайды</em></h5>
     <ol class="breadcrumb mb-4">
-      <li class="breadcrumb-item active">Какое то подназвание</li>
+      <li class="breadcrumb-item active"><em>Абай Құнанбайұлы</em></li>
     </ol>
 
     <div class="row">
@@ -77,8 +77,8 @@
               <div class="carousel-caption d-none d-md-block">
                 <b><h1 style="color: skyblue"  th:text="${c.name}"></h1></b>
                 <h2 style="color: skyblue" th:text="${c.description}"></h2>
-                <h3> <a class="small text-danger stretched-link" sec:authorize="isAuthenticated()"
-                        th:href="@{'/category-places/'+${c.id}}"><b>Подробнее --></b></a></h3>
+                <h3> <a class="small stretched-link" style="color: ivory" sec:authorize="isAuthenticated()"
+                        th:href="@{'/category-places/'+${c.id}}"><b>Подробнее</b></a></h3>
               </div>
             </div>
         </div>

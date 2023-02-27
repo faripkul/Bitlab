@@ -48,4 +48,8 @@ public class FavoriteService {
     public List<Favorites> getAllFavPlaces(){
         return favoriteRepository.findAll();
     }
+
+    public void deleteFavPlace(Long id){
+        favoriteRepository.deleteById(id);
+    }
 }

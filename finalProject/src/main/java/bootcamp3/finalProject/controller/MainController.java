@@ -185,7 +185,7 @@ public class MainController {
             model.addAttribute("regionz", regions);
             model.addAttribute("catRegPlasez", placeService.getFinalPlaces(category, region));
         }
-        return "travel/test";
+        return "/travel/lastPlacePage";
     }
 
     @GetMapping(value = "/infoMesta/{id}")
@@ -247,6 +247,14 @@ public class MainController {
         favoriteService.addFavPlace(favorites, placeId, name,description);
         return "redirect:/wantVisit";
     }
+
+    @PostMapping(value = "/delFavPlaces")
+    public String delFavPlaces(@RequestParam(name = "favPlaceId") Long placeId) {
+        favoriteService.deleteFavPlace(placeId);
+        return "redirect:/adminPanel";
+    }
+
+
 
     @GetMapping(value = "/wantVisit")
     public String getAllFavPlaces(Model model){

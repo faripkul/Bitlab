@@ -59,41 +59,41 @@
           </a>
           <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
             <nav class="sb-sidenav-menu-nested nav">
-              <a class="nav-link" th:href="@{'/wantVisit'}">Хочу посетить</a>
-              <a class="nav-link" href="layout-sidenav-light.html">Другое</a>
+              <a class="nav-link" th:href="@{'/wantVisit'}">Избранные места</a>
+              <a class="nav-link" href="#">Другое</a>
             </nav>
           </div>
-          <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
-            <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-            Страницы
-            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-          </a>
-          <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
-            <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-              <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
-                Аутентификация
-                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-              </a>
-              <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
-                <nav class="sb-sidenav-menu-nested nav">
-                  <a class="nav-link" href="login.html">Login</a>
-                  <a class="nav-link" href="register.html">Register</a>
-                  <a class="nav-link" href="password.html">Сменить пароль</a>
-                </nav>
-              </div>
-              <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
-                Error
-                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-              </a>
-              <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
-                <nav class="sb-sidenav-menu-nested nav">
-                  <a class="nav-link" href="401.html">401 Page</a>
-                  <a class="nav-link" href="404.html">404 Page</a>
-                  <a class="nav-link" href="500.html">500 Page</a>
-                </nav>
-              </div>
-            </nav>
-          </div>
+<!--          <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">-->
+<!--            <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>-->
+<!--            Страницы-->
+<!--            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>-->
+<!--          </a>-->
+<!--          <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">-->
+<!--            <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">-->
+<!--              <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">-->
+<!--                Аутентификация-->
+<!--                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>-->
+<!--              </a>-->
+<!--&lt;!&ndash;              <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">&ndash;&gt;-->
+<!--&lt;!&ndash;                <nav class="sb-sidenav-menu-nested nav">&ndash;&gt;-->
+<!--&lt;!&ndash;                  <a class="nav-link" href="login.html">Login</a>&ndash;&gt;-->
+<!--&lt;!&ndash;                  <a class="nav-link" href="register.html">Register</a>&ndash;&gt;-->
+<!--&lt;!&ndash;                  <a class="nav-link" href="password.html">Сменить пароль</a>&ndash;&gt;-->
+<!--&lt;!&ndash;                </nav>&ndash;&gt;-->
+<!--&lt;!&ndash;              </div>&ndash;&gt;-->
+<!--              <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">-->
+<!--                Error-->
+<!--                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>-->
+<!--              </a>-->
+<!--              <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">-->
+<!--                <nav class="sb-sidenav-menu-nested nav">-->
+<!--                  <a class="nav-link" href="401.html">401 Page</a>-->
+<!--                  <a class="nav-link" href="404.html">404 Page</a>-->
+<!--                  <a class="nav-link" href="500.html">500 Page</a>-->
+<!--                </nav>-->
+<!--              </div>-->
+<!--            </nav>-->
+<!--          </div>-->
           <div class="sb-sidenav-menu-heading"></div>
         </div>
       </div>
@@ -112,14 +112,14 @@
           <i id="tm-video-control-button" class="fas fa-pause"></i>
           <form class="d-flex position-absolute tm-search-form" th:action="@{'/category-places/'+${categoriez.id}}">
             <input type="hidden" th:value="${categoriez.id}" name="categId">
-            <input class="form-control tm-search-input" type="text" placeholder="Напишите название"
+            <input class="form-control tm-search-input" type="text" placeholder="Напишите название места"
                    aria-label="Search" name="key">
             <button class="btn btn-outline tm-search-btn" style="background-color: #4e555b" type="submit">
               <i class="fas fa-search"></i>
             </button>
           </form>
         </div>
-        <h1 class="mt-4" th:text="${categoriez.name}"></h1>
+        <em><h1 class="mt-4" th:text="${categoriez.name}"></h1></em>
         <ol class="breadcrumb mb-4">
           <li class="breadcrumb-item active" th:text="${categoriez.description}"></li>
         </ol>

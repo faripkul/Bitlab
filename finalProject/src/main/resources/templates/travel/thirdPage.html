@@ -31,72 +31,30 @@
 </nav>
 
 <div id="layoutSidenav">
-  <div id="layoutSidenav_nav">
-    <nav class="sb-sidenav accordion sb-sidenav-light" id="sidenavAccordion">
-      <div class="sb-sidenav-menu">
-        <div class="nav">
-          <div class="sb-sidenav-menu-heading">Фари</div>
-          <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutss" aria-expanded="false" aria-controls="collapseLayouts">
-            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-            Выберите регион
-            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-          </a>
-          <div class="collapse" id="collapseLayoutss" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-            <nav class="sb-sidenav-menu-nested nav" th:each="reg: ${regionz}">
-              <a class="nav-link" th:href="@{'/category_region_places/'+${reg.id}+'/'+${categoriez.id}}" th:text="${reg.name}"></a>
-            </nav>
-          </div>
-          <div class="sb-sidenav-menu-heading">Interface</div>
-          <a class="nav-link collapsed" th:href="@{'/wantVisit'}" aria-expanded="false" aria-controls="collapseLayouts">
-            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-            Список избранных мест кабинет
-            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-          </a>
-          <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-            <nav class="sb-sidenav-menu-nested nav">
-              <a class="nav-link" th:href="@{'/wantVisit'}">Хочу посетить</a>
-              <a class="nav-link" href="layout-sidenav-light.html">Другое</a>
-            </nav>
-          </div>
-          <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
-            <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-            Страницы
-            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-          </a>
-          <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
-            <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-              <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
-                Аутентификация
-                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-              </a>
-              <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
-                <nav class="sb-sidenav-menu-nested nav">
-                  <a class="nav-link" href="login.html">Login</a>
-                  <a class="nav-link" href="register.html">Register</a>
-                  <a class="nav-link" href="password.html">Сменить пароль</a>
-                </nav>
-              </div>
-              <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
-                Error
-                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-              </a>
-              <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
-                <nav class="sb-sidenav-menu-nested nav">
-                  <a class="nav-link" href="401.html">401 Page</a>
-                  <a class="nav-link" href="404.html">404 Page</a>
-                  <a class="nav-link" href="500.html">500 Page</a>
-                </nav>
-              </div>
-            </nav>
-          </div>
-          <div class="sb-sidenav-menu-heading"></div>
-        </div>
-      </div>
-      <div class="sb-sidenav-footer">
-        <div class="small"></div>
-      </div>
-    </nav>
-  </div>
+<!--  <div id="layoutSidenav_nav">-->
+<!--    <nav class="sb-sidenav accordion sb-sidenav-light" id="sidenavAccordion">-->
+<!--      <div class="sb-sidenav-menu">-->
+<!--        <div class="nav">-->
+<!--          <div class="sb-sidenav-menu-heading">Interface</div>-->
+<!--          <a class="nav-link collapsed" th:href="@{'/wantVisit'}" aria-expanded="false" aria-controls="collapseLayouts">-->
+<!--            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>-->
+<!--            Избранные места-->
+<!--            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>-->
+<!--          </a>-->
+<!--          <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">-->
+<!--            <nav class="sb-sidenav-menu-nested nav">-->
+<!--              <a class="nav-link" th:href="@{'/wantVisit'}">Избранные места</a>-->
+<!--              <a class="nav-link" href="layout-sidenav-light.html">Другое</a>-->
+<!--            </nav>-->
+<!--          </div>-->
+<!--          <div class="sb-sidenav-menu-heading"></div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="sb-sidenav-footer">-->
+<!--        <div class="small"></div>-->
+<!--      </div>-->
+<!--    </nav>-->
+<!--  </div>-->
   <div id="layoutSidenav_content">
     <main>
       <br>
@@ -120,7 +78,7 @@
                     <input type="hidden" th:value="${onePlace.name}" name="name">
                     <input type="hidden" th:value="${onePlace.description}" name="description">
                     <input type="hidden" th:value="${onePlace.id}" name="placeId">
-                  <button type="submit" class="form-control" style="color: darkturquoise">Хочу посетить + </button>
+                  <button type="submit" class="form-control" style="color: darkturquoise">Добавить в избранное + </button>
                 </form>
                 </div>
               </div>
@@ -130,18 +88,12 @@
                 <!-- Blog post-->
                 <div class="card mb-4">
                   <a href="#!"><img class="card-img-top" th:src="@{'data:imagethree/jpeg;base64,' + ${onePlace.imagethree}}" width="50%" height="250" alt="..." /></a>
-                  <div class="card-body">
-                    <div class="small text-muted">January 1, 2022</div>
-                  </div>
                 </div>
               </div>
               <div class="col-lg-6">
                 <!-- Blog post-->
                 <div class="card mb-4">
                   <a href="#!"><img class="card-img-top" th:src="@{'data:imagetwo/jpeg;base64,' + ${onePlace.imagetwo}}" width="100%" height="250" alt="..." /></a>
-                  <div class="card-body">
-                    <div class="small text-muted">January 1, 2022</div>
-                  </div>
                 </div>
               </div>
             </div>
@@ -155,7 +107,7 @@
                     <div class="card-footer py-3 border-0" style="background-color: white;">
                       <div class="d-flex flex-start w-100">
                         <img class="rounded-circle shadow-1-strong me-3"
-                             src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(19).webp" alt="avatar" width="40"
+                             th:src="@{'/src/человек.jpg'}" alt="avatar" width="40"
                              height="40" />
                         <div class="form-outline w-100">
                            <textarea class="form-control" id="commentText" rows="4"
@@ -164,8 +116,7 @@
                         <input type="hidden" id="plId">
                       </div>
                       <div class="float-end mt-2 pt-1">
-                        <button id="postComment" type="button" class="btn btn-primary btn-sm" >Добавить</button>
-                        <button type="button" class="btn btn-outline-primary btn-sm">Отмена</button>
+                        <button id="postComment" type="button" class="btn btn-success btn-sm" >Добавить</button>
                       </div>
                     </div>
                 </div>
@@ -173,7 +124,7 @@
             </div>
             <!-- Side widget-->
             <div class="card mb-4">
-              <div class="card-header">Комментарии</div>
+              <div class="card-header">Комментарий</div>
               <div class="card-body">
                  <div class="card-body" id="commentsOfPlace">
                    </div>
@@ -246,11 +197,11 @@
     <footer class="py-4 bg-light mt-auto">
       <div class="container-fluid px-4">
         <div class="d-flex align-items-center justify-content-between small">
-          <div class="text-muted">Copyright &copy; Your Website 2022</div>
+          <div class="text-muted">Copyright &copy; Fari 2023</div>
           <div>
-            <a href="#">Privacy Policy</a>
+            <a href="#"></a>
             &middot;
-            <a href="#">Terms &amp; Conditions</a>
+            <a href="#"></a>
           </div>
         </div>
       </div>
