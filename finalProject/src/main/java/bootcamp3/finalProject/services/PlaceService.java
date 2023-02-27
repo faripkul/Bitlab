@@ -56,6 +56,11 @@ public class PlaceService {
         return placesRepository.findAllByCategories(category);
      }
 
+//    public List<Places>getSearchPlaces(Category category, String nameParam){
+//        return placesRepository.searchPlacesByNameAndCategories(category, nameParam);
+//    }
+
+
 
     public Places addPlaces(Places places){
         return placesRepository.save(places);

@@ -131,5 +131,4 @@ public class HomeController {
 
         return "redirect:/detailsStr?id="+applicId;
     }
-
 }

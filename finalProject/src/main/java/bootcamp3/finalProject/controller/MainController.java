@@ -48,7 +48,7 @@ public class MainController {
 
     @GetMapping(value = "/test")
     public String test(Model model) {
-        return "/travel/test";
+        return "/travel/test2";
     }
 
     @GetMapping(value = "/signin")
@@ -132,10 +132,8 @@ public class MainController {
 
 
     @PostMapping(value = "/addCategory")
-    public String addCategory(@RequestParam(name = "name") String name,
-                              @RequestParam(name = "description") String description,
-                              @RequestParam(name = "file") MultipartFile file) {
-        categoryService.addCategoryF(name, description, file);
+    public String addCategory(Category category) {
+        categoryService.addCategory(category);
         return "redirect:/adminPanel";
     }
 
@@ -200,6 +198,7 @@ public class MainController {
     @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @GetMapping(value = "/adminPanel")
     public String adminPanel(Model model) {
+        model.addAttribute("offerz", offerService.getOffers()) ;
         model.addAttribute("regionzz", regionService.getAllRegions());
         model.addAttribute("categoriez", categoryService.getAllCategories());
         return "/travel/adminPanel";
@@ -259,12 +258,6 @@ public class MainController {
     public String addOffer(Offer offer) {
         regionService.addOffer(offer);
         return "redirect:/adminPanel";
-    }
-
-    @GetMapping(value = "/offer")
-    public String getOffer(Model model){
-        model.addAttribute("offerz", offerService.getOffers()) ;
-        return "/travel/offers";
     }
 }
 

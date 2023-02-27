@@ -18,17 +18,25 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container px-5">
     <img th:src="@{'/src/heart.png'}" class="m-lg-2">
-    <a class="navbar-brand" th:href="@{'/home'}">Мой Казахстан</a>
+    <a class="navbar-brand" th:href="@{'/home'}" th:text="#{label.MyKz}"></a>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-        <li class="nav-item"><a class="nav-link" href="#!" >Язык</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+             data-bs-toggle="dropdown" aria-expanded="false" th:text="#{label.language}">
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" th:href="@{'?lang=kk'}">Қазақша</a></li>
+            <li><a class="dropdown-item" th:href="@{'?lang=ru'}">Русский</a></li>
+          </ul>
+        </li>
         <li class="nav-item"><a class="nav-link" sec:authorize="hasAnyRole('ROLE_ADMIN')"  th:href="@{'/adminPanel'}">Админ панель</a></li>
         <li class="nav-item" data-bs-target="#signUp" data-bs-toggle="modal">
-          <a class="nav-link" th:href="@{'/signup'}" sec:authorize="isAnonymous()">Регистрация</a></li>
+          <a class="nav-link" th:href="@{'/signup'}" sec:authorize="isAnonymous()" th:text="#{label.register}"></a></li>
         <li class="nav-item" data-bs-target="#signIn" data-bs-toggle="modal">
-          <a class="nav-link" th:href="@{'/signin'}" sec:authorize="isAnonymous()">Войти</a></li>
+          <a class="nav-link" th:href="@{'/signin'}" sec:authorize="isAnonymous()" th:text="#{label.signin}"></a></li>
         <li class="nav-item" data-bs-target="#signIn" data-bs-toggle="modal">
-          <a class="nav-link" th:href="@{'/exit'}" method="post" sec:authorize="isAuthenticated()">Выйти</a></li>
+          <a class="nav-link" th:href="@{'/exit'}" method="post" sec:authorize="isAuthenticated()" th:text="#{label.exit}"></a></li>
       </ul>
     </div>
   </div>
@@ -65,10 +73,10 @@
             </div>
           </div>
             <div class="carousel-item" th:each="c: ${categoriez}" >
-              <img th:src="@{'/src/paris.jpg'}" width="1950" height="400"  class="d-block w-100" alt="..." >
+              <img th:src="@{'/src/юрта.jpg'}" width="1950" height="400"  class="d-block w-100" alt="..." >
               <div class="carousel-caption d-none d-md-block">
-                <b><h1 style="color: #1a1e21"  th:text="${c.name}"></h1></b>
-                <b><h2 style="color: #1a1e21" th:text="${c.description}"></h2></b>
+                <b><h1 style="color: skyblue"  th:text="${c.name}"></h1></b>
+                <h2 style="color: skyblue" th:text="${c.description}"></h2>
                 <h3> <a class="small text-danger stretched-link" sec:authorize="isAuthenticated()"
                         th:href="@{'/category-places/'+${c.id}}"><b>Подробнее --></b></a></h3>
               </div>
@@ -98,26 +106,7 @@
   </div>
 
   <div class="row gx-4 gx-lg-5">
-    <div class="col-md-4 mb-5">
-      <div class="card h-100">
-        <div class="card-body">
-          <h2 class="card-title text-center">Популярные места сейчас</h2>
-          <p class="card-text"></p>
-        </div>
-        <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">Подробнее</a></div>
-      </div>
-    </div>
-    <div class="col-md-4 mb-5">
-      <div class="card h-100">
-        <div class="card-body">
-          <h2 class="card-title text-center">Дополнительно</h2>
-          <p class="card-text"><a href="https://tengritravel.kz">Новости туризма</a></p>
-          <p class="card-text"><a href="https://www.gismeteo.kz">Погода</a></p>
-          <p class="card-text"><a href="https://www.google.kz/maps/@50.1210624,67.5285017,8.06z?hl=ru">Карта</a></p>
-        </div>
-        <div class="card-footer"><a class="btn btn-primary btn-sm" href="https://tengritravel.kz">Подробнее</a></div>
-      </div>
-    </div>
+
     <div class="col-md-4 mb-5">
       <div class="card h-100">
         <div class="card-body">
@@ -134,13 +123,53 @@
       </div>
     </div>
 
-    <div>
-    <p>sjzhrizs</p>
-    </div>
 
+
+
+    <div class="col-md-4 mb-5">
+      <div class="card h-100">
+        <div class="card-body">
+
+          <div class="footer-heading">
+            <h4>Ссылки</h4>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <ul>
+                <li><a href="https://tengritravel.kz"><i class="fa fa-stop"></i>Новости туризма</a></li>
+                <li><a href="https://www.gismeteo.kz"><i class="fa fa-stop"></i>Погода в Казахстане</a></li>
+                <li><a href="https://www.google.kz/maps/@50.1210624,67.5285017,8.06z?hl=ru"><i class="fa fa-stop"></i>Карта</a></li>
+
+              </ul>
+            </div>
+            <div class="col-md-6">
+              <ul>
+                <li><a href="#"><i class="fa fa-stop"></i>Наши клиенты</a></li>
+                <li><a href="#"><i class="fa fa-stop"></i>Партнеры</a></li>
+                <li><a href="#"><i class="fa fa-stop"></i>О Нас</a></li>
+
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 mb-5">
+      <div class="card h-100">
+        <div class="card-body">
+          <div class="footer-heading">
+            <h4>Контакты</h4>
+          </div>
+          <ul>
+            <li><span>Телефон:</span><a href="#">777-777-7777</a></li>
+            <li><span>Email:</span><a href="#">77@fari.co</a></li>
+            <li><span>Адрес:</span><a href="#">fari.co</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
-
 <footer class="py-5 bg-dark">
   <div class="container px-4 px-lg-5"><p class="m-0 text-center text-white">Copyright &copy; Fari 2023</p></div>
 </footer>
