@@ -11,6 +11,8 @@ import org.springframework.stereotype.Repository;
 import javax.transaction.Transactional;
 import java.util.List;
 
+import static org.hibernate.loader.Loader.SELECT;
+
 @Transactional
 @Repository
 public interface PlacesRepository extends JpaRepository<Places, Long> {
@@ -19,5 +21,6 @@ public interface PlacesRepository extends JpaRepository<Places, Long> {
 
 //    @Query(value = "SELECT place FROM Places place WHERE LOWER(place.name) LIKE :nameParam")
 //    List<Places> searchPlacesByNameAndCategories(Category category,String nameParam);
-
+    @Query("SELECT p FROM Places p WHERE p.name LIKE %?1% OR p.description LIKE %?1%")
+     List<Places>findAllK(String keyword);
 }

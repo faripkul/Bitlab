@@ -18,5 +18,7 @@ public class Offer extends BaseEntity{
     private String text;
 
     private LocalDateTime localDateTime;
+
+
 }
 

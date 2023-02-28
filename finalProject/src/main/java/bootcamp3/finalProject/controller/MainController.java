@@ -140,13 +140,16 @@ public class MainController {
 
     @GetMapping(value = "/category-places/{id}")
     public String categoryPlaces(@PathVariable("id") Long id, Model model) {
+        String keyword = "Almaty";
         Category category = categoryService.getCategory(id);
         List<Region> regions = regionService.getAllRegions();
         if (category != null) {
             model.addAttribute("categoriez", category);
             model.addAttribute("regionz", regions);
             model.addAttribute("catplacez", placeService.getPlaces(category));
+            model.addAttribute("catplacezz", placeService.listAll(keyword));
         }
+
         return "travel/secondPage";
     }
 
@@ -266,6 +269,19 @@ public class MainController {
     public String addOffer(Offer offer) {
         regionService.addOffer(offer);
         return "redirect:/adminPanel";
+    }
+
+    @PostMapping(value = "/deleteOffer")
+    public String delOffer(@RequestParam(name = "offId") Long offerId) {
+        offerService.delOffer(offerId);
+        return "redirect:/adminPanel";
+    }
+    @GetMapping(value = "/search")
+        public String searchPlaces(Model model, @RequestParam(name = "keyword") String keyword) {
+        List<Region> regions = regionService.getAllRegions();
+            model.addAttribute("regionz", regions);
+            model.addAttribute("placez", placeService.listAll(keyword));
+            return "travel/searchPage";
     }
 }
 

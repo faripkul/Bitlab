@@ -99,6 +99,7 @@
   <div class="container">
     </br>
     </br>
+    <em><h3 class="mt-4">Админ панель</h3></em>
     </br>
  <div id="layoutSidenav_content">
  <main>
@@ -149,7 +150,7 @@
 
     <div class="modal-body">
       <div class="alert alert-danger alert-dismissible fade show" role="alert" th:if = "${param.usererror!=null}">
-        <p style="color: #dc3545">Новое место не длбавлено!</p>
+        <p style="color: #dc3545">Новое место не добавлено!</p>
       </div>
       <div class="alert alert-success alert-dismissible fade show" role="alert"
            th:if = "${param.success!=null}">
@@ -223,7 +224,6 @@
        <th scope="col">ID</th>
        <th scope="col">Текст</th>
        <th scope="col">Дата</th>
-       <th scope="col">Статус</th>
        <th scope="col">Удалить</th>
      </tr>
      </thead>
@@ -232,8 +232,12 @@
        <th scope="row" th:text="${o.id}"></th>
        <td th:text="${o.text}"></td>
        <td th:text="${o.localDateTime}"></td>
-       <td></td>
-       <td><button type="submit" class="btn btn-outline-danger">-</button></td>
+       <td>
+         <form th:action="@{'/deleteOffer'}" method="post">
+           <input type="hidden" th:value="${o.id}" name="offId">
+         <button type="submit" class="btn btn-outline-danger">-</button>
+         </form>
+       </td>
      </tr>
      </tbody>
    </table>

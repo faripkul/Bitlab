@@ -27,7 +27,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container px-5">
         <img th:src="@{'/src/heart.png'}" class="m-lg-2">
-        <a class="navbar-brand" th:href="@{'/home'}">Мой Казахстан</a>
+        <a class="navbar-brand" th:href="@{'/home'}" th:text="#{label.MyKz}"></a>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             </ul>
@@ -40,17 +40,6 @@
         <nav class="sb-sidenav accordion sb-sidenav-light" id="sidenavAccordion">
             <div class="sb-sidenav-menu">
                 <div class="nav">
-                    <div class="sb-sidenav-menu-heading">Фари</div>
-                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutss" aria-expanded="false" aria-controls="collapseLayouts">
-                        <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                        Выберите регион
-                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                    </a>
-                    <div class="collapse" id="collapseLayoutss" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                        <nav class="sb-sidenav-menu-nested nav" th:each="reg: ${regionz}">
-                            <a class="nav-link" th:href="@{'/category_region_places/'+${reg.id}+'/'+${categoriez.id}}" th:text="${reg.name}"></a>
-                        </nav>
-                    </div>
                     <div class="sb-sidenav-menu-heading">Interface</div>
                     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                         <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
@@ -59,7 +48,7 @@
                     </a>
                     <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link" th:href="@{'/wantVisit'}">Хочу посетить</a>
+                            <a class="nav-link" th:href="@{'/wantVisit'}">Избранные места</a>
                             <a class="nav-link" href="#">Другое</a>
                         </nav>
                     </div>
@@ -80,28 +69,27 @@
                     </video>
                     <i id="tm-video-control-button" class="fas fa-pause"></i>
                 </div>
-                <em><h1 class="mt-4" th:text="${categoriez.name}"></h1></em>
+<!--                <em><h1 class="mt-4" th:text="${categoriez.name}"></h1></em>-->
                 <ol class="breadcrumb mb-4">
-                    <li class="breadcrumb-item active" th:text="${categoriez.description}"></li>
+<!--                    <li class="breadcrumb-item active" th:text="${categoriez.description}"></li>-->
                 </ol>
 
                 <div class="row tm-mb-90 tm-gallery w-100 h-100" >
-                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5" th:each="catReg:${catRegPlasez}">
-                        <figure class="effect-ming tm-video-item" style="width: 250px; height: 250px;">
-                            <img th:src="@{'data:image/jpeg;base64,' + ${catReg.image}}" alt="Image" class="img-fluid" style="height: 100%; width: 100%; object-fit: cover;">
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5" th:each="pl: ${placez}">
+                        <figure class="gallery_image effect-ming tm-video-item" style="width: 250px; height: 250px;">
+                            <img th:src="@{'data:image/jpeg;base64,' + ${pl.image}}" alt="Image" class="img-fluid"
+                                 style="height: 100%; width: 100%; object-fit: cover;">
                             <figcaption class="d-flex align-items-center justify-content-center">
-                                <h2 th:text="${catReg.name}"></h2>
-                                <a th:href="@{'/infoMesta/'+${catReg.id}}">Подробнее</a>
+                                <h2 th:text="${pl.name}"></h2>
+<!--                                <a th:href="@{'/infoMesta/'+${pl.id}}" th:text="#{label.else}"></a>-->
                             </figcaption>
                         </figure>
                         <div class="d-flex justify-content-between tm-text-gray">
-                            <span th:text="${catReg.regions.name}"></span>
+                            <span th:text="${pl.regions.name}"></span>
                         </div>
                         <br>
                     </div>
                 </div>
-
-
             </div>
         </main>
         <footer class="py-4 bg-light mt-auto">

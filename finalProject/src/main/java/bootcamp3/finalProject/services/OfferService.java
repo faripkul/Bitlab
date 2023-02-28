@@ -25,4 +25,9 @@ public class OfferService {
     public List<Offer> getOffers(){
     return offerRepository.findAll();
     }
+
+
+    public void delOffer(Long id){
+        offerRepository.deleteById(id);
+    }
 }

@@ -38,42 +38,38 @@ public class PlaceService {
     private final UserService userService;
 
 
-
-
-    public List<Places> getAllPlaces(){
+    public List<Places> getAllPlaces() {
         return placesRepository.findAll();
     }
 
-//    public List<Places> getAllUserPlaces(){
+    //    public List<Places> getAllUserPlaces(){
 //        User user = userService.getUser();
 //        return placesRepository.findAllByUserId(user.getId());
 //    }
-    public Places getPlace(Long id){
+    public Places getPlace(Long id) {
         return placesRepository.findById(id).orElseThrow();
     }
 
-    public List<Places>getPlaces(Category category){
+    public List<Places> getPlaces(Category category) {
         return placesRepository.findAllByCategories(category);
-     }
+    }
 
 //    public List<Places>getSearchPlaces(Category category, String nameParam){
 //        return placesRepository.searchPlacesByNameAndCategories(category, nameParam);
 //    }
 
 
-
-    public Places addPlaces(Places places){
+    public Places addPlaces(Places places) {
         return placesRepository.save(places);
     }
 
 
-
-    public void addPlacesF(MultipartFile file,MultipartFile filetwo,MultipartFile filethree, String name, String description, String history, Long regId, Long catId){
+    public void addPlacesF(MultipartFile file, MultipartFile filetwo, MultipartFile filethree, String name, String description, String history, Long regId, Long catId) {
         Places places1 = new Places();
         String fileNAme = StringUtils.cleanPath(file.getOriginalFilename());
         String fileNAmeTwo = StringUtils.cleanPath(filetwo.getOriginalFilename());
         String fileNAmeThree = StringUtils.cleanPath(filethree.getOriginalFilename());
-        if(fileNAme.contains("..")) {
+        if (fileNAme.contains("..")) {
             System.out.println("not a valid file");
         }
         try {
@@ -81,8 +77,8 @@ public class PlaceService {
             places1.setImagetwo(Base64.getEncoder().encodeToString(filetwo.getBytes()));
             places1.setImagethree(Base64.getEncoder().encodeToString(filethree.getBytes()));
 
-        }catch (IOException e){
-          e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         places1.setDescription(description);
         places1.setHistory(history);
@@ -93,15 +89,15 @@ public class PlaceService {
     }
 
 
-    public void deletePlaces(Long id){
+    public void deletePlaces(Long id) {
         placesRepository.deleteById(id);
     }
 
-    public void assignPlace(Long placeId){
+    public void assignPlace(Long placeId) {
         Places places1 = new Places();
         places1.setId(placeId);
         placesRepository.save(places1);
-      }
+    }
 
 //    public void assignPlace2(Long placeId, Long userId){
 //        Long userId = userService.getUser().getId();
@@ -124,16 +120,24 @@ public class PlaceService {
 //        }
 //    }
 
-    public List<Places>getFinalPlaces(Category category, Region region){
+    public List<Places> getFinalPlaces(Category category, Region region) {
         return placesRepository.findAllByCategoriesAndRegions(category, region);
     }
 
-    public void getPlacesF(String name, String description, String history, Long regId){
+    public void getPlacesF(String name, String description, String history, Long regId) {
         Places places1 = new Places();
         places1.setDescription(description);
         places1.setHistory(history);
         places1.setName(name);
         places1.setRegions(regionService.getRegion(regId));
         placesRepository.save(places1);
+    }
+
+
+    public List<Places> listAll(String keyword) {
+        if (keyword != null) {
+            return placesRepository.findAllK(keyword);
+        }
+        return placesRepository.findAll();
     }
 }
